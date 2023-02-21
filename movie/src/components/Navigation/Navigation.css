@@ -1,0 +1,6 @@
+@import url(./__link/Navigation__link.css);
+
+.Navigation {
+  display: flex;
+  gap: 30px;
+}

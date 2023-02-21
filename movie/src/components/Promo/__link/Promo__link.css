@@ -1,0 +1,13 @@
+.Promo__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 129px;
+  height: 36px;
+  border-radius: 3px;
+  border: 1px solid #fff;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  font-size: 12px;
+}

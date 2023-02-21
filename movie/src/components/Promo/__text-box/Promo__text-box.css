@@ -1,0 +1,7 @@
+.Promo__text-box {
+  text-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  margin-bottom: 146px;
+}

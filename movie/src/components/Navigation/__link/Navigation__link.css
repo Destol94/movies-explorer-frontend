@@ -1,0 +1,11 @@
+@import url(./_login/Navigation__link_login.css);
+
+.Navigation__link {
+  text-decoration: none;
+  color: #fff;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+}

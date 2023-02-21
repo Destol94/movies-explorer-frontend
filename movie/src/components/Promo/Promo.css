@@ -1,0 +1,12 @@
+@import url(./__text-box/Promo__text-box.css);
+@import url(./__header/Promo__header.css);
+@import url(./__explanations/Promo__explanations.css);
+@import url(./__info/Promo__info.css);
+@import url(./__link/Promo__link.css);
+@import url(./__img/Promo__img.css);
+
+.Promo {
+  display: flex;
+  padding: 75px 0;
+  justify-content: space-between;
+}
