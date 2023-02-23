@@ -1,0 +1,11 @@
+@import url(./__part/scale__part.css);
+@import url(./__part/_back/scale__part_back.css);
+@import url(./__week/scale__week.css);
+@import url(./__week/_back/scale__week_back.css);
+@import url(./__week/_back/scale__week_front.css);
+@import url(./__signature/scale__signature.css);
+
+.scale {
+  display: flex;
+  font-size: 14px;
+}

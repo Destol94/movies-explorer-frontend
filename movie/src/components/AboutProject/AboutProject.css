@@ -1,0 +1,9 @@
+@import url(./__text-box/AboutProject__text-box.css);
+@import url(./__text-box/_item/AboutProject__text-box_item.css);
+@import url(./__text-box/_item-title/AboutProject__text-box_item-title.css);
+@import url(./__text-box/_item-text/AboutProject__text-box_item-text.css);
+
+.AboutProject {
+  padding: 110px 70px;
+  font-weight: 400;
+}

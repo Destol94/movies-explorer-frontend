@@ -1,0 +1,7 @@
+.AboutMe__info {
+  text-align: start;
+  max-width: 600px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}

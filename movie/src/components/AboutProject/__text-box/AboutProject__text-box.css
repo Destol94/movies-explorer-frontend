@@ -1,0 +1,6 @@
+.AboutProject__text-box {
+  padding: 0;
+  margin: 70px 0 110px;
+  display: flex;
+  justify-content: space-between;
+}
