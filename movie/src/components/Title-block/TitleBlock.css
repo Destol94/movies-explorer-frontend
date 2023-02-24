@@ -1,9 +1,8 @@
 .title-text {
   font-size: 22px;
-  margin: 0;
+  margin: 0 auto 23px;
   font-weight: 400;
   text-align: start;
-  margin-bottom: 23px;
 }
 .title-line {
   border: 1px solid #dadada;

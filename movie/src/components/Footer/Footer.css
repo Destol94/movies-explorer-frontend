@@ -1,0 +1,11 @@
+@import url(./__title/Footer__title.css);
+@import url(./__signature/Footer__signature.css);
+@import url(./__year/Footer__year.css);
+@import url(./__links/Footer__links.css);
+@import url(./__link/Footer__link.css);
+
+.Footer {
+  padding: 0 70px 20px;
+  font-size: 13px;
+  font-weight: 400;
+}

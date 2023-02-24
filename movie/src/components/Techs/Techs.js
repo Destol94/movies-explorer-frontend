@@ -1,9 +1,5 @@
 import TitleBlock from '../Title-block/TitleBlock';
 import './Techs.css';
-import './__text/Techs__text.css';
-import './__header/Techs__header.css';
-import './__list/Techs__list.css';
-import './__item/Techs__item.css';
 
 function Techs() {
   return (

@@ -5,6 +5,7 @@ import Techs from '../Techs/Techs';
 import '../header-text/header-text.css';
 import '../text/text_size-small.css';
 import AboutMe from '../AboutMe/AboutMe';
+import Portfolio from '../Portfolio/Portfolio';
 
 function Main(props) {
   return (
@@ -13,6 +14,7 @@ function Main(props) {
       <AboutProject />
       <Techs />
       <AboutMe />
+      <Portfolio />
     </div>
   )
 }

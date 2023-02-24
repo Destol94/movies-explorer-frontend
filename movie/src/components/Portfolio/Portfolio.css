@@ -1,0 +1,9 @@
+@import url(./__header/Portfolio__header.css);
+@import url(./__list/Portfolio__list.css);
+@import url(./__item/Portfolio__item.css);
+@import url(./__link/Portfolio__link.css);
+
+.Portfolio {
+  padding: 0 70px 125px;
+  text-align: start;
+}

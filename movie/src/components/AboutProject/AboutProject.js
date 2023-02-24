@@ -4,7 +4,7 @@ import TitleBlock from '../Title-block/TitleBlock';
 
 function AboutProject(props) {
   return (
-    <div className="AboutProject">
+    <div className="AboutProject" itemID="AboutProject">
       <TitleBlock titleText="О проекте" />
       <ul className="AboutProject__text-box">
         <li className="AboutProject__text-box_item">

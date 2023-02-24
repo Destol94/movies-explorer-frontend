@@ -1,6 +1,6 @@
 import './Promo.css';
 import earth from '../../images/earth.svg';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-scroll';
 
 function Promo(props) {
   return (
@@ -10,7 +10,7 @@ function Promo(props) {
           <h1 className="header-text">Учебный проект студента факультета <nobr>Веб-разработки</nobr>.</h1>
           <p className="Promo__explanations">Листайте ниже, чтобы узнать больше про этот проект и его создателя.</p>
         </div>
-        <Link className="Promo__link">Узнать больше</Link>
+        <Link className="Promo__link" smooth={true} to="AboutProject">Узнать больше</Link>
       </div>
       <img className="Promo__img" src={earth} alt="Планета Земля, где суша изображена концентрацией слова WEB" />
     </div>

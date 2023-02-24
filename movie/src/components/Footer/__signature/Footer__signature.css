@@ -1,0 +1,6 @@
+.Footer__signature {
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px auto 0;
+}
