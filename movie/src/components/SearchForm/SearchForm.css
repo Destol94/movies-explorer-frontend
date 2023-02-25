@@ -1,3 +1,9 @@
+@import url(./__btn-submit/SearchForm__btn-submit.css);
+@import url(./__box/SearchForm__box.css);
+@import url(./__input/SearchForm__input.css);
+@import url(./__line/SearchForm__line.css);
+
 .SearchForm {
-  
+  padding: 0 70px;
+  overflow: hidden;
 }

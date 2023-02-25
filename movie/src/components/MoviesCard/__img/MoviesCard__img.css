@@ -1,0 +1,5 @@
+.MoviesCard__img {
+  width: 100%;
+  height: 203px;
+  object-fit: contain;
+}

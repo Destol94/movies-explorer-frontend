@@ -1,0 +1,13 @@
+@import url(./__info/MoviesCard__info.css);
+@import url(./__text/MoviesCard__text.css);
+@import url(./__name/MoviesCard__name.css);
+@import url(./__duration/MoviesCard__duration.css);
+@import url(./__btn/MoviesCard__btn.css);
+@import url(./__img/MoviesCard__img.css);
+
+.MoviesCard {
+  max-width: 364px;
+  max-height: 271px;
+  display: flex;
+  flex-direction: column;
+}

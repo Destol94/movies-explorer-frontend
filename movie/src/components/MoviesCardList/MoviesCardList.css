@@ -1,0 +1,6 @@
+.MoviesCardList {
+  padding: 70px 70px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px 24px;
+}
