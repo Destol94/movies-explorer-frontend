@@ -1,0 +1,21 @@
+@import url(./__logo/RouteWithForm__logo.css);
+@import url(./__title/RouteWithForm__title.css);
+@import url(./__box-form/RouteWithForm__box-form.css);
+@import url(./__label/RouteWithForm__label.css);
+@import url(./__label-text/RouteWithForm__label-text.css);
+@import url(./__input/RouteWithForm__input.css);
+@import url(./__span-error/RouteWithForm__span-error.css);
+@import url(./__btn-submit/RouteWithForm__btn-submit.css);
+@import url(./__box-switch/RouteWithForm__box-switch.css);
+@import url(./__box-switch_text/RouteWithForm__box-switch_text.css);
+@import url(./__box_link/RouteWithForm__box_link.css);
+
+.RouteWithForm {
+  padding: 70px 0;
+  width: 396px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0 auto;
+  color: #fff;
+}

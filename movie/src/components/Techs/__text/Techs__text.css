@@ -1,3 +1,15 @@
 .Techs__text {
   margin: 26px 0 100px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.04em;
+}
+
+@media screen and (max-width: 900px) {
+  .Techs__text {
+    margin: 22px 0 83px;
+    font-size: 12px;
+    line-height: 18px;
+  }
 }

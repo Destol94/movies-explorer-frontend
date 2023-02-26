@@ -3,7 +3,10 @@
   margin: 0 auto 23px;
   font-weight: 400;
   text-align: start;
+  line-height: 27px;
+  letter-spacing: -0.04em;
 }
+
 .title-line {
   border: 1px solid #dadada;
   width: 100%;

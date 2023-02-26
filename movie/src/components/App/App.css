@@ -1,8 +1,10 @@
 @import url(../link/link.css);
 @import url(../line/line.css);
+@import url(../logo/logo.css);
 
 .App {
   background-color: #202020;
   text-align: center;
   font-family: 'Inter', sans-serif;
+  height: 100vh;
 }

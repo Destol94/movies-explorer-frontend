@@ -6,3 +6,9 @@
   min-height: 74px;
   padding: 0 70px;
 }
+
+@media screen and (max-width: 900px) {
+  .Header {
+    padding: 0 30px;
+  }
+}

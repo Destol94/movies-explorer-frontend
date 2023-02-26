@@ -2,4 +2,12 @@
   font-weight: 400;
   margin: 0;
   font-size: 50px;
+  line-height: 58px;
+}
+
+@media screen and (max-width: 900px) {
+  .Promo__header {
+    font-size: 40px;
+    line-height: 50px;
+  }
 }

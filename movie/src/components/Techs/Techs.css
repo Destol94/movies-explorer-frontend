@@ -7,3 +7,9 @@
   padding: 100px 70px;
   background-color: #272727;
 }
+
+@media screen and (max-width: 900px) {
+  .Techs {
+    padding: 90px 50px;
+  }
+}

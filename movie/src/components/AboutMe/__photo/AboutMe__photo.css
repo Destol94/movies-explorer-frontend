@@ -4,3 +4,10 @@
   border-radius: 10px;
   object-fit: cover;
 }
+
+@media screen and (max-width: 900px) {
+  .AboutMe__photo {
+    width: 255px;
+    height: 307px;
+  }
+}

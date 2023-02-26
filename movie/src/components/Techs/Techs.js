@@ -5,8 +5,8 @@ function Techs() {
   return (
     <div className="Techs">
       <TitleBlock titleText="Технологии" />
-      <h2 className="header-text Techs__header">7 технологий</h2>
-      <p className="Techs__text text_size-small">На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.</p>
+      <h2 className="Techs__header">7 технологий</h2>
+      <p className="Techs__text">На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.</p>
       <ul className="Techs__list">
         <li className="Techs__item">HTML</li>
         <li className="Techs__item">CSS</li>

@@ -10,7 +10,7 @@ function AboutMe(props) {
       <div className="AboutMe__content">
         <div className="AboutMe__info">
           <div className="AboutMe__text">
-            <h2 className="AboutMe__header header-text">Денис</h2>
+            <h2 className="AboutMe__header">Денис</h2>
             <p className="AboutMe__short-information">Фронтенд-разработчик, 28 лет</p>
             <p className="AboutMe__description">Я живу в Красноярске, учусь на курсах Яндекс Практикума. У меня есть жена
               и сын. Я люблю слушать музыку, стремлюсь становиться лучше. Недавно начал кодить. После того, как пройду курс

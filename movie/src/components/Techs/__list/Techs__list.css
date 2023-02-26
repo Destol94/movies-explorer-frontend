@@ -5,4 +5,13 @@
   padding: 0;
   gap: 10px;
   font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.04em;
+}
+
+@media screen and (max-width: 900px) {
+  .Techs__list {
+    font-size: 12px;
+    line-height: 15px;
+  }
 }

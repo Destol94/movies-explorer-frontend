@@ -6,4 +6,11 @@
 .AboutProject {
   padding: 110px 70px;
   font-weight: 400;
+  background-color: #202020;
+}
+
+@media screen and (max-width: 900px) {
+  .AboutProject {
+    padding: 90px 50px;
+  }
 }

@@ -2,3 +2,10 @@
   width: 310px;
   height: 304px;
 }
+
+@media screen and (max-width: 900px) {
+  .Promo__img {
+    order: -1;
+    margin-bottom: 48px;
+  }
+}

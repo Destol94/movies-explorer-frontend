@@ -6,4 +6,11 @@
 .Portfolio {
   padding: 0 70px 125px;
   text-align: start;
+  background-color: #202020;
+}
+
+@media screen and (max-width: 900px) {
+  .Portfolio {
+    padding: 0 50px 90px;
+  }
 }

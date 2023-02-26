@@ -9,11 +9,11 @@ function AboutProject(props) {
       <ul className="AboutProject__text-box">
         <li className="AboutProject__text-box_item">
           <p className="AboutProject__text-box_item-title">Дипломный проект включал 5 этапов</p>
-          <p className="AboutProject__text-box_item-text text_size-small">Составление плана, работу над бэкендом, вёрстку, добавление функциональности и финальные доработки.</p>
+          <p className="AboutProject__text-box_item-text">Составление плана, работу над бэкендом, вёрстку, добавление функциональности и финальные доработки.</p>
         </li>
         <li className="AboutProject__text-box_item">
           <p className="AboutProject__text-box_item-title">На выполнение диплома ушло 5 недель</p>
-          <p className="AboutProject__text-box_item-text text_size-small">У каждого этапа был мягкий и жёсткий дедлайн, которые нужно было соблюдать, чтобы успешно защититься.</p>
+          <p className="AboutProject__text-box_item-text">У каждого этапа был мягкий и жёсткий дедлайн, которые нужно было соблюдать, чтобы успешно защититься.</p>
         </li>
       </ul>
       <div className="scale">

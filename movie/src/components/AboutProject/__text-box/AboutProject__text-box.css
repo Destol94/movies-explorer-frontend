@@ -3,4 +3,12 @@
   margin: 70px 0 110px;
   display: flex;
   justify-content: space-between;
+  gap: 40px;
+}
+
+@media screen and (max-width: 900px) {
+  .AboutProject__text-box {
+    gap: 30px;
+    margin: 70px 0 93px;
+  }
 }

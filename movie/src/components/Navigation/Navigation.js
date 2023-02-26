@@ -16,7 +16,7 @@ function Navigation(props) {
         </>
         :
         <>
-          <NavLink className={(isActive) => `Navigation__link ${isActive ? "Navigation__link_active" : ""}`}>Регистрация</NavLink>
+          <NavLink className={(isActive) => `Navigation__link Navigation__link_registration ${isActive ? "Navigation__link_active" : ""}`}>Регистрация</NavLink>
           <NavLink className={(isActive) => `Navigation__link Navigation__link_login ${isActive ? "Navigation__link_active" : ""}`}>Войти</NavLink>
         </>
       }

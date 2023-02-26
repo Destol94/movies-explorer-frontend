@@ -8,4 +8,11 @@
 
 .AboutMe {
   padding: 110px 70px 100px;
+  background-color: #202020;
+}
+
+@media screen and (max-width: 900px) {
+  .AboutMe {
+    padding: 90px 50px;
+  }
 }

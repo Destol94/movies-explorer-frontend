@@ -1,6 +1,6 @@
+@import url(./__container/MoviesCardList__container.css);
+@import url(./__btn/MoviesCardList__btn.css);
+
 .MoviesCardList {
-  padding: 70px 70px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px 24px;
+  padding: 70px 70px 160px;
 }

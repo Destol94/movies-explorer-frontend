@@ -1,0 +1,6 @@
+.RouteWithForm__box-switch {
+  display: flex;
+  align-self: center;
+  gap: 6px;
+  margin-top: 16px;
+}

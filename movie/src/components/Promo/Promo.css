@@ -12,3 +12,11 @@
   background-color: #073042;
   padding: 75px 70px;
 }
+
+@media screen and (max-width: 900px) {
+  .Promo {
+    padding: 140px 50px 76px;
+    flex-direction: column;
+    align-items: center;
+  }
+}

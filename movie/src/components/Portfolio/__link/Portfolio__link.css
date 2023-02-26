@@ -2,4 +2,11 @@
   font-size: 30px;
   line-height: 50px;
   font-weight: 400;
+  letter-spacing: -0.04em;
+}
+
+@media screen and (max-width: 900px) {
+  .Portfolio__link {
+    font-size: 28px;
+  }
 }

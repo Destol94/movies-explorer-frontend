@@ -5,3 +5,12 @@
   gap: 36px;
   margin-bottom: 146px;
 }
+
+@media screen and (max-width: 900px) {
+  .Promo__text-box {
+    text-align: center;
+    align-items: center;
+    gap: 22px;
+    margin-bottom: 92px;
+  }
+}
