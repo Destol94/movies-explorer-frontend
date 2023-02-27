@@ -8,3 +8,9 @@
     width: 140px;
   }
 }
+
+@media screen and (max-width: 710px) {
+  .scale__part_back {
+    width: 100px;
+  }
+}

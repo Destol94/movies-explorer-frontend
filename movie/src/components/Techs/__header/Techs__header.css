@@ -11,3 +11,11 @@
     margin-top: 80px;
   }
 }
+
+@media screen and (max-width: 710px) {
+  .Techs__header.Techs__header {
+    margin-top: 60px;
+    font-size: 30px;
+    line-height: 36px;
+  }
+}

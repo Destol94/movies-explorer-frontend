@@ -18,4 +18,11 @@
   align-items: flex-start;
   margin: 0 auto;
   color: #fff;
+  background-color: #202020;
+}
+
+@media screen and (max-width: 900px) {
+  .RouteWithForm {
+    padding: 232px 0;
+  }  
 }

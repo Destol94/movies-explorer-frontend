@@ -4,3 +4,9 @@
   line-height: 29px;
   margin: 0 auto 120px;
 }
+
+@media screen and (max-width: 900px) {
+  .Profile__name {
+    margin-bottom: 96px;
+  }  
+}

@@ -2,8 +2,15 @@
   text-decoration: none;
   color: #fff;
   font-size: 12px;
+  line-height: 16px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: 500;
+}
+
+@media screen and (max-width: 710px) {
+  .Navigation__link {
+    font-size: 10px;
+  }
 }

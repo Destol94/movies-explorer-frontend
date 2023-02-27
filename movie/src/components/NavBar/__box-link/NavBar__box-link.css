@@ -1,0 +1,10 @@
+.NavBar__box-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 159px;
+  gap: 28px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+}

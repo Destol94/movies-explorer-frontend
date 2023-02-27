@@ -6,3 +6,9 @@
   color: #fff;
   padding: 246px 0 60px;
 }
+
+@media screen and (max-width: 900px) {
+  .NotFound {
+    padding: 408px 0 222px;
+  }  
+}

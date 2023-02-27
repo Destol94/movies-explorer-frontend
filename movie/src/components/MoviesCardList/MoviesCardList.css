@@ -3,4 +3,11 @@
 
 .MoviesCardList {
   padding: 70px 70px 160px;
+  background-color: #202020;
+}
+
+@media screen and (max-width: 900px) {
+  .MoviesCardList {
+    padding: 70px 30px 80px;
+  }  
 }

@@ -7,3 +7,10 @@
   padding: 0 30px;
   margin: 70px auto;
 }
+
+@media screen and (max-width: 900px) {
+  .SearchForm__box {
+    margin: 80px auto 120px;
+    padding: 0 20px;
+  }  
+}

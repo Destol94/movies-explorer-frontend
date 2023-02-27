@@ -9,4 +9,11 @@
 
 .Profile {
   padding-bottom: 70px;
+  background-color: #202020;
+}
+
+@media screen and (max-width: 900px) {
+  .Profile {
+    padding-bottom: 269px;
+  }  
 }

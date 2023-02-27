@@ -7,7 +7,7 @@ function Home(props) {
 
   return (
     <div className="Home">
-      <Header loggedIn={props.loggedIn} bcColor="#073042"/>
+      <Header loggedIn={props.loggedIn} bcColor="#073042" handlerOpenNavBar={props.onNavBar} />
       <Main />
       <Footer />
     </div>

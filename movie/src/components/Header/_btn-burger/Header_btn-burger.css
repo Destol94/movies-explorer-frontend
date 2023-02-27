@@ -1,0 +1,17 @@
+.Header_btn-burger {
+  flex-direction: column;
+  padding: 0;
+  border: none;
+  background: none;
+  gap: 7px;
+  justify-content: center;
+  cursor: pointer;
+  height: fit-content;
+  display: none;
+}
+
+@media screen and (max-width: 900px) {
+  .Header_btn-burger {
+    display: flex;
+  }
+}

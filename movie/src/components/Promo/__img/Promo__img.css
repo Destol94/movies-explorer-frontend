@@ -9,3 +9,10 @@
     margin-bottom: 48px;
   }
 }
+@media screen and (max-width: 900px) {
+  .Promo__img {
+    width: 210px;
+    height: 206px;
+    margin-bottom: 44px;
+  }
+}

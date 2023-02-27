@@ -1,0 +1,7 @@
+.NavBar__btn-close {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  padding: 0;
+  border: none;
+}

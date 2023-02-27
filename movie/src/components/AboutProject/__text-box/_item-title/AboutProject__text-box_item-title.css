@@ -11,3 +11,11 @@
     margin: 0 0 22px;
   }
 }
+
+@media screen and (max-width: 710px) {
+  .AboutProject__text-box_item-title {
+    margin: 0 0 16px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+}

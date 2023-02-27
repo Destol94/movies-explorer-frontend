@@ -14,3 +14,10 @@
     margin-bottom: 92px;
   }
 }
+
+@media screen and (max-width: 710px) {
+  .Promo__text-box {
+    margin-bottom: 80px;
+    gap: 24px;
+  }
+}

@@ -18,7 +18,7 @@ function Movies(props) {
 
 return (
   <div className="Movies">
-    <Header loggedIn={props.loggedIn} />
+    <Header loggedIn={props.loggedIn} handlerOpenNavBar={props.onNavBar} />
     <SearchForm />
     <MoviesCardList movieList={testMovie} />
     <Footer />

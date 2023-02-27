@@ -6,3 +6,11 @@
   color: #000;
   margin-left: 30px;
 }
+
+@media screen and (max-width: 710px) {
+  .Navigation__link_login.Navigation__link_login {
+    margin-left: 14px;
+    width: 54px;
+    height: 26px;
+  }
+}

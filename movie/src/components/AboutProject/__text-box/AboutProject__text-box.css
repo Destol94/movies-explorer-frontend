@@ -12,3 +12,12 @@
     margin: 70px 0 93px;
   }
 }
+
+@media screen and (max-width: 710px) {
+  .AboutProject__text-box {
+    gap: 30px;
+    margin: 60px 0;
+    flex-direction: column;
+    gap: 56px;
+  }
+}

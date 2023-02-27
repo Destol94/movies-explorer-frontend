@@ -12,3 +12,11 @@
   width: 100%;
   height: 0;
 }
+
+@media screen and (max-width: 710px) {
+  .title-text {
+    font-size: 18px;
+    line-height: 22px;
+    margin-bottom: 28px;
+  }
+}

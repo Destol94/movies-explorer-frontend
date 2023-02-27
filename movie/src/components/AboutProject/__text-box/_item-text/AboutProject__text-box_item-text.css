@@ -11,3 +11,10 @@
     line-height: 18px;
   }
 }
+
+@media screen and (max-width: 710px) {
+  .AboutProject__text-box_item-text {
+    font-size: 11px;
+    line-height: 16px;
+  }
+}

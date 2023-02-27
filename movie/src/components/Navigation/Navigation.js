@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 function Navigation(props) {
   return (
-    <nav className="Navigation">
+    <nav className={`Navigation ${props.loggedIn && 'Navigation_vision'}`}>
       {props.loggedIn ?
         <>
           <NavLink className={(isActive) => `Navigation__link Navigation__link_text-size ${isActive ? "Navigation__link_active" : ""}`}>Фильмы</NavLink>

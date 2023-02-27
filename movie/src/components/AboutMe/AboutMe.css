@@ -16,3 +16,9 @@
     padding: 90px 50px;
   }
 }
+
+@media screen and (max-width: 710px) {
+  .AboutMe {
+    padding: 70px 14px;
+  }
+}
