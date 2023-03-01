@@ -7,6 +7,7 @@
   outline: none;
   color: #fff;
   font-size: 18px;
+  font-weight: 400;
 }
 
 .SearchForm__input::placeholder {
@@ -14,4 +15,15 @@
   background-repeat: no-repeat;
   background-position: 0 4px;
   padding-left: 30px;
+}
+
+@media screen and (max-width: 710px) {
+  .SearchForm__input {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .SearchForm__input::placeholder {
+    background: none;
+    padding-left: 0;
+  }
 }

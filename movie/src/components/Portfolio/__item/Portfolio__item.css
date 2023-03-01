@@ -1,9 +1,15 @@
 .Portfolio__item {
   display: flex;
   justify-content: space-between;
-  height: 69px;
+  height: 77px;
   align-items: center;
 }
 .Portfolio__item:not(:last-child) {
 border-bottom: solid 1px #424242;
+}
+
+@media screen and (max-width: 710px) {
+  .Portfolio__item {
+    height: 68px;
+  }
 }

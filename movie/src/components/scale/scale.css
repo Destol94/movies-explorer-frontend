@@ -9,6 +9,8 @@
 .scale {
   display: flex;
   font-size: 14px;
+  line-height: 16.94px;
+  font-weight: 400;
 }
 
 @media screen and (max-width: 710px) {

@@ -4,7 +4,7 @@ import './Profile.css';
 function Profile(props) {
   return (
     <div className="Profile">
-      <Header loggedIn={props.loggedIn} />
+      <Header loggedIn={props.loggedIn} handlerOpenNavBar={props.onNavBar} />
       <div className="Profile__data" >
         <h1 className="Profile__name">Привет, {props.name}!</h1>
         <div className="Profile__info-box">

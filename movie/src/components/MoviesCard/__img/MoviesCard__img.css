@@ -3,3 +3,9 @@
   height: 203px;
   object-fit: contain;
 }
+
+@media screen and (max-width: 710px) {
+  .MoviesCard__img {
+    height: 168px;
+  }  
+}

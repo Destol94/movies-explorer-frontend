@@ -3,3 +3,10 @@
   height: 3px;
   background-color: #fff;
 }
+
+@media screen and (max-width: 710px) {
+  .Header_btn-burger_line {
+    width: 22px;
+    height: 2.5px;
+  }
+}

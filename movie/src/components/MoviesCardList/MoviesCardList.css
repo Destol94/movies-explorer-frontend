@@ -11,3 +11,10 @@
     padding: 70px 30px 80px;
   }  
 }
+
+@media screen and (max-width: 710px) {
+  .MoviesCardList {
+    padding: 50px 10px 80px;
+    justify-items: center;
+  }  
+}

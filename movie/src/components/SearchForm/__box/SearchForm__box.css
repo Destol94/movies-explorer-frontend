@@ -14,3 +14,14 @@
     padding: 0 20px;
   }  
 }
+
+@media screen and (max-width: 710px) {
+  .SearchForm__box {
+    flex-direction: column;
+    margin: 80px auto 44px;
+    padding: 0;
+    gap: 45px;
+    height: auto;
+    background: none;
+  }  
+}

@@ -9,3 +9,10 @@
     gap: 36px 30px;
   }  
 }
+
+@media screen and (max-width: 900px) {
+  .MoviesCardList__container {
+    gap: 16px;
+    align-items: center;
+  }  
+}

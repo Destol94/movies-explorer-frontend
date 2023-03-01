@@ -12,3 +12,7 @@
   line-height: 16px;
   color: #fff;
 }
+
+.RouteWithForm__input:invalid {
+  color: #EE3465
+}

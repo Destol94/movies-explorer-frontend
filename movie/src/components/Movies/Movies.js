@@ -8,10 +8,61 @@ import Footer from '../Footer/Footer';
 function Movies(props) {
   const testMovie = [
     {
-    },
-    {
+      nameRU: '33 слова о дизайне',
+      duration: '1ч 47м',
+      image: '../../images/pic1.jpg'
     },{
+      nameRU: '33 слова о дизайне',
+      duration: '1ч 47м',
+      image: '../../images/pic1.jpg'
     },{
+      nameRU: '33 слова о дизайне',
+      duration: '1ч 47м',
+      image: '../../images/pic1.jpg'
+    },{
+      nameRU: '33 слова о дизайне',
+      duration: '1ч 47м',
+      image: '../../images/pic1.jpg'
+    },{
+      nameRU: '33 слова о дизайне',
+      duration: '1ч 47м',
+      image: '../../images/pic1.jpg'
+    },{
+      nameRU: '33 слова о дизайне',
+      duration: '1ч 47м',
+      image: '../../images/pic1.jpg'
+    },{
+      nameRU: '33 слова о дизайне',
+      duration: '1ч 47м',
+      image: '../../images/pic1.jpg'
+    },{
+      nameRU: '33 слова о дизайне',
+      duration: '1ч 47м',
+      image: '../../images/pic1.jpg'
+    },{
+      nameRU: '33 слова о дизайне',
+      duration: '1ч 47м',
+      image: '../../images/pic1.jpg'
+    },{
+      nameRU: '33 слова о дизайне',
+      duration: '1ч 47м',
+      image: '../../images/pic1.jpg'
+    },{
+      nameRU: '33 слова о дизайне',
+      duration: '1ч 47м',
+      image: '../../images/pic1.jpg'
+    },{
+      nameRU: '33 слова о дизайне',
+      duration: '1ч 47м',
+      image: '../../images/pic1.jpg'
+    },{
+      nameRU: '33 слова о дизайне',
+      duration: '1ч 47м',
+      image: '../../images/pic1.jpg'
+    },{
+      nameRU: '33 слова о дизайне',
+      duration: '1ч 47м',
+      image: '../../images/pic1.jpg'
     },
   ]
     

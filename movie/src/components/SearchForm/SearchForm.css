@@ -1,5 +1,6 @@
 @import url(./__btn-submit/SearchForm__btn-submit.css);
 @import url(./__box/SearchForm__box.css);
+@import url(./__container-search/SearchForm__container-search.css);
 @import url(./__input/SearchForm__input.css);
 @import url(./__line/SearchForm__line.css);
 
@@ -11,5 +12,11 @@
 @media screen and (max-width: 900px) {
   .SearchForm {
     padding: 0 30px;
+  }  
+}
+
+@media screen and (max-width: 900px) {
+  .SearchForm {
+    padding: 0 10px ;
   }  
 }

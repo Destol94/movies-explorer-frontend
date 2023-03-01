@@ -8,3 +8,10 @@
   font-weight: 500;
   line-height: 22px;
 }
+
+@media screen and (max-width: 710px) {
+  .NavBar__box-link {
+    margin-top: 144px;
+    gap: 24px;
+  }  
+}

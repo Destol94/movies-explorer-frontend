@@ -8,5 +8,6 @@
 
 @media screen and (max-width: 900px) {
   .Promo__explanations {
+    max-width: 260px;
   }
 }

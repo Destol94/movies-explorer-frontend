@@ -3,14 +3,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 14px;
-  line-height: 16.94px;
   margin-bottom: 14px;
-  font-weight: 400;
 }
 
 @media screen and (max-width: 710px) {
   .scale__week {
     height: 35px;
+    margin-bottom: 10px;
   }
 }

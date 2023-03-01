@@ -8,7 +8,7 @@
 
 @media screen and (max-width: 900px) {
   .AboutProject__text-box {
-    gap: 30px;
+    gap: 50px;
     margin: 70px 0 93px;
   }
 }

@@ -4,5 +4,6 @@
   line-height: 12px;
   color: #EE3465;
   text-align: start;
-  margin-top: -10px;
+  position: absolute;
+  bottom: -22px;
 }

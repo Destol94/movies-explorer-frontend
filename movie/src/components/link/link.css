@@ -1,4 +1,12 @@
 .link {
   color: #fff;
   text-decoration: none;
+  opacity: 1;
+}
+
+.link:hover {
+  opacity: .6;
+  scale: 1.03;
+  transition: opacity .3s ease-in-out;
+  transition: scale .3s ease-in-out;
 }

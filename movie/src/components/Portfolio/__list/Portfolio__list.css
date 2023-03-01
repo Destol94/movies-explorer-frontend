@@ -1,4 +1,13 @@
 .Portfolio__list {
   padding: 0;
   margin: 0;
+  gap: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 710px) {
+  .Portfolio__list {
+    gap: 0;
+  }
 }

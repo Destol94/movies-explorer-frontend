@@ -22,3 +22,10 @@
     grid-template-columns: repeat(auto-fit, 84px);
   }
 }
+
+@media screen and (max-width: 400px) {
+  .Techs__list {
+    display: grid;
+    grid-template-columns: repeat(2, 84px);
+  }
+}

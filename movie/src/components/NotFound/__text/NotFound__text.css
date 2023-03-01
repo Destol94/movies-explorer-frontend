@@ -4,3 +4,11 @@
   line-height: 19px;
   margin: 5px auto 184px;
 }
+
+@media screen and (max-width: 900px) {
+  .NotFound__text {
+    font-size: 12px;
+    line-height: 15px;
+    margin: 10px auto 284px;
+  }
+}

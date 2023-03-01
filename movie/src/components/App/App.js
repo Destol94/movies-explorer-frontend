@@ -12,7 +12,7 @@ import NavBar from '../NavBar/NavBar';
 
 function App() {
   
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
   const [isNavBarOpen, setIsNavBarOpen] = useState(null);
 
   function handleOpenNavBar() {
@@ -28,7 +28,7 @@ function App() {
         <Route path="/" element={ <Home loggedIn={loggedIn} onNavBar={handleOpenNavBar} /> }  />
         <Route path="/movies" element={ <Movies loggedIn={loggedIn} onNavBar={handleOpenNavBar} />} />
         <Route path="/saved-movies" element={ <Movies loggedIn={loggedIn} onNavBar={handleOpenNavBar} /> } />
-        <Route path="/profile" element={ <Profile loggedIn={loggedIn} />} />
+        <Route path="/profile" element={ <Profile loggedIn={loggedIn} onNavBar={handleOpenNavBar} />} />
         <Route path="/signup" element={ <Register /> } />
         <Route path="/signin" element={ <Login />} />
         <Route path="*" element={ <NotFound />} />

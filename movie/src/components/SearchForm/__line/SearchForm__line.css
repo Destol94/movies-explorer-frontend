@@ -4,3 +4,9 @@
   border: solid 1px #505050;
   margin: 0 29px 0 19px;
 }
+
+@media screen and (max-width: 710px) {
+  .SearchForm__line {
+    display: none;
+  }  
+}
