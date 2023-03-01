@@ -4,3 +4,9 @@
   line-height: 29px;
   margin: 0 auto 40px 0;
 }
+
+@media screen and (max-width: 710px) {
+  .RouteWithForm__title {
+    margin: 0 auto 80px;
+  }  
+}

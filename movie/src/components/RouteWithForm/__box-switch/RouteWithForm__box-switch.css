@@ -4,3 +4,9 @@
   gap: 6px;
   margin-top: 16px;
 }
+
+@media screen and (max-width: 710px) {
+  .RouteWithForm__box-switch {
+    margin-top: 14px;
+  }
+}

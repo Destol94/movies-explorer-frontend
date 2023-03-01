@@ -1,3 +1,4 @@
+@import url(./__link/RouteWithForm__link.css);
 @import url(./__logo/RouteWithForm__logo.css);
 @import url(./__title/RouteWithForm__title.css);
 @import url(./__box-form/RouteWithForm__box-form.css);
@@ -24,5 +25,12 @@
 @media screen and (max-width: 900px) {
   .RouteWithForm {
     padding: 232px 0;
+  }  
+}
+
+@media screen and (max-width: 710px) {
+  .RouteWithForm {
+    padding: 56px 30px 30px;
+    width: 260px;
   }  
 }

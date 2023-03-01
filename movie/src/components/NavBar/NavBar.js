@@ -13,7 +13,8 @@ function NavBar(props) {
         </nav>
         <Link to="/profile" className="NavBar__link link NavBar__link_account"><img className="" src={manSilhouette} alt="силуэт человечка" />Аккаунт</Link>
         <button type="button" className="NavBar__btn-close" onClick={props.closeNavBar}>
-          <div className="NavBar__btn-close_piece" />
+          <div className="NavBar__btn-close_piece NavBar__btn-close_piece-left" />
+          <div className="NavBar__btn-close_piece NavBar__btn-close_piece-right" />
         </button>
       </div>
     </div>

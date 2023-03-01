@@ -6,6 +6,8 @@
 @import url(./__link/_account/NavBar__link_account.css);
 @import url(./__btn-close/NavBar__btn-close.css);
 @import url(./__btn-close/_piece/NavBar__btn-close_piece.css);
+@import url(./__btn-close/_piece-left/NavBar__btn-close_piece-left.css);
+@import url(./__btn-close/_piece-right/NavBar__btn-close_piece-right.css);
 
 .NavBar {
   

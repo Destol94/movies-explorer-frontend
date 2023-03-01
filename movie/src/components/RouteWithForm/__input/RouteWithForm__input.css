@@ -16,3 +16,6 @@
 .RouteWithForm__input:invalid {
   color: #EE3465
 }
+.RouteWithForm__input:focus {
+  border: #fff solid 1px;
+}

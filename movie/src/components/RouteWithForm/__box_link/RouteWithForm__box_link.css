@@ -4,3 +4,10 @@
   line-height: 17px;
   color: #4285F4;
 }
+
+@media screen and (max-width: 710px) {
+  .RouteWithForm__box_link {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}

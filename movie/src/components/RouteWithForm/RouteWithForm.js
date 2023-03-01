@@ -1,48 +1,32 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../images/logo.svg';
+import validInputs from '../../vendor/validationInputs/validationInputs';
 import './RouteWithForm.css';
-const inputs = document.querySelectorAll('RouteWithForm__input');
-const spann = document.querySelector('.RouteWithForm__span-error');
 
 
 function RouteWithForm(props) {
   
-  function validInputs() {
-    // console.log(inputs.validity.valid);
-
-    // if (!inputs.every(input => input.validity.valid === true)) {
-    //   spann.textContent = 'Что-то пошло не так...';
-    // }
-    // else {
-    //   spann.textContent = '';
-    // }
-    inputs.forEach((input => {return input.validity.valid === true}));
-  }
   const [email, setEmail] = useState('');
-  function handleChandgeEmail(e) {
-    setEmail(e.target.value);
-    validInputs();
-  }
   const [password, setPassword] = useState('');
 
-  function handleChandgePassword(e) {
-    setPassword(e.target.value);
+  function handleChandgeInput(e, setInput) {
+    setInput(e.target.value);
     validInputs();
   }
   return (
     <div className="RouteWithForm">
-      <Link to="/"><img src={logo} alt="Логотип" className="logo RouteWithForm__logo" /></Link>
+      <Link to="/" className="RouteWithForm__link"><img src={logo} alt="Логотип" className="logo RouteWithForm__logo" /></Link>
       <p className="RouteWithForm__title">{props.textTitle}</p>
       <div className="RouteWithForm__box-form">
         {props.children}
         <label className="RouteWithForm__label">
           <p className="RouteWithForm__label-text">E-mail</p>
-          <input className="RouteWithForm__input" value={email} onChange={handleChandgeEmail} type="email" required />
+          <input className="RouteWithForm__input" value={email} onChange={(e)=>handleChandgeInput(e, setEmail)} type="email" required />
         </label>
         <label className="RouteWithForm__label">
           <p className="RouteWithForm__label-text">Пароль</p>
-          <input type="password" className="RouteWithForm__input" value={password} onChange={handleChandgePassword} required />
+          <input type="password" className="RouteWithForm__input" value={password} onChange={(e)=>handleChandgeInput(e, setPassword)} required />
         </label>
         <span className="RouteWithForm__span-error"></span>
       </div>

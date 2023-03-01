@@ -10,9 +10,9 @@
   }  
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 710px) {
   .MoviesCardList__container {
     gap: 16px;
-    align-items: center;
+    justify-items: center;
   }  
 }

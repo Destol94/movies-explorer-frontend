@@ -7,4 +7,5 @@
   width: 30px;
   height: 30px;
   overflow: hidden;
+  background-image: url(../../../images/inactiveCheckbox.svg);
 }

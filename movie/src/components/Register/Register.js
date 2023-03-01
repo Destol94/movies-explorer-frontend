@@ -1,13 +1,14 @@
 import { useState } from 'react';
+import validInputs from '../../vendor/validationInputs/validationInputs';
 import RouteWithForm from '../RouteWithForm/RouteWithForm';
 import './Register.css';
 
 function Register() {
 
-
   const [name, setName] = useState('');
   function handleChangeName(e) {
     setName(e.target.value);
+    validInputs();
   }
   return (
     <RouteWithForm link="/signin"

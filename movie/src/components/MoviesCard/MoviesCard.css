@@ -3,6 +3,8 @@
 @import url(./__name/MoviesCard__name.css);
 @import url(./__duration/MoviesCard__duration.css);
 @import url(./__btn/MoviesCard__btn.css);
+@import url(./__btn/_active/MoviesCard__btn_active.css);
+@import url(./__btn/_cross/MoviesCard__btn_cross.css);
 @import url(./__img/MoviesCard__img.css);
 
 .MoviesCard {
