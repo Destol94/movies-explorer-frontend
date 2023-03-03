@@ -1,5 +1,4 @@
 import './MoviesCard.css';
-import inactiveCheckbox from '../../images/inactiveCheckbox.svg';
 import TESTIMG from '../../images/pic2.jpg';
 import { useState } from 'react';
 
@@ -22,7 +21,7 @@ function MoviesCard(props) {
         </div>
         <button onClick={props.saveMovie ? deleteMovie : handleChandgeBtn } className={`${props.saveMovie ? 'MoviesCard__btn_cross' : btnSaveMovieClassName} MoviesCard__btn`} />
       </div>
-      <img className="MoviesCard__img" alt="" src={TESTIMG} />
+      <img className="MoviesCard__img" alt="картинка к фильму" src={TESTIMG} />
     </div>
   )
 }

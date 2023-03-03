@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import './MoviesCardList.css';
 
@@ -10,12 +9,12 @@ function MoviesCardList(props) {
     <div  className="MoviesCardList">
       <div className="MoviesCardList__container">
         {
-          props.movieList.map((movie) => (
-            <MoviesCard movie={movie} key={movie.i} saveMovie={props.saveMovie} />
+          props.movieListRender.map((movie, id) => (
+            <MoviesCard movie={movie} key={id} saveMovie={props.saveMovie} />
           ))
         }
       </div>
-      <button type="button" className="MoviesCardList__btn" >Ещё</button>
+      <button onClick={props.handleLoadCard} type="button" className="MoviesCardList__btn" >Ещё</button>
     </div>
   )
 }

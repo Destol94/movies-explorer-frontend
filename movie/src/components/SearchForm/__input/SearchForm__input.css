@@ -10,6 +10,10 @@
   font-weight: 400;
 }
 
+.SearchForm__input:focus::parent   {
+  border: #fff solid 1px;
+}
+
 .SearchForm__input::placeholder {
   background-image: url(../../../images/loupe.svg);
   background-repeat: no-repeat;
