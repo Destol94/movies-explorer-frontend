@@ -21,7 +21,7 @@ function MoviesCard(props) {
         </div>
         <button onClick={props.saveMovie ? deleteMovie : handleChandgeBtn } className={`${props.saveMovie ? 'MoviesCard__btn_cross' : btnSaveMovieClassName} MoviesCard__btn`} />
       </div>
-      <img className="MoviesCard__img" alt="картинка к фильму" src={props.movie.image.url} />
+      <img className="MoviesCard__img" alt="картинка к фильму" src={`https://api.nomoreparties.co/${props.movie.image.url}`} />
     </div>
   )
 }

@@ -10,85 +10,12 @@ import NotFound from '../NotFound/NotFound';
 import NavBar from '../NavBar/NavBar';
 import moviesApi from '../../utils/MoviesApi';
 
-const testMovie = [
-  {
-    i: 1,
-    nameRU: '33 слова о дизайне',
-    duration: '1ч 47м',
-    image: '../../images/pic1.jpg'
-  }, {
-    i: 2,
-    nameRU: '33 слова о дизайне',
-    duration: '1ч 47м',
-    image: '../../images/pic1.jpg'
-  }, {
-    i: 3,
-    nameRU: '33 слова о дизайне',
-    duration: '1ч 47м',
-    image: '../../images/pic1.jpg'
-  }, {
-    i: 4,
-    nameRU: '33 слова о дизайне',
-    duration: '1ч 47м',
-    image: '../../images/pic1.jpg'
-  }, {
-    i: 5,
-    nameRU: '33 слова о дизайне',
-    duration: '1ч 47м',
-    image: '../../images/pic1.jpg'
-  }, {
-    i: 6,
-    nameRU: '33 слова о дизайне',
-    duration: '1ч 47м',
-    image: '../../images/pic1.jpg'
-  }, {
-    i: 7,
-    nameRU: '33 слова о дизайне',
-    duration: '1ч 47м',
-    image: '../../images/pic1.jpg'
-  }, {
-    i: 8,
-    nameRU: '33 слова о дизайне',
-    duration: '1ч 47м',
-    image: '../../images/pic1.jpg'
-  }, {
-    i: 9,
-    nameRU: '33 слова о дизайне',
-    duration: '1ч 47м',
-    image: '../../images/pic1.jpg'
-  }, {
-    i: 10,
-    nameRU: '33 слова о дизайне',
-    duration: '1ч 47м',
-    image: '../../images/pic1.jpg'
-  }, {
-    i: 11,
-    nameRU: '33 слова о дизайне',
-    duration: '1ч 47м',
-    image: '../../images/pic1.jpg'
-  }, {
-    i: 12,
-    nameRU: '33 слова о дизайне',
-    duration: '1ч 47м',
-    image: '../../images/pic1.jpg'
-  }, {
-    i: 13,
-    nameRU: '33 слова о дизайне',
-    duration: '1ч 47м',
-    image: '../../images/pic1.jpg'
-  }, {
-    i: 14,
-    nameRU: '33 слова о дизайне',
-    duration: '1ч 47м',
-    image: '../../images/pic1.jpg'
-  },
-]
 
 function App() {
 
   const [loggedIn, setLoggedIn] = useState(false);
   const [isNavBarOpen, setIsNavBarOpen] = useState(null);
-  const [movieListWithWidth, setMovieListWithWidth] = useState(testMovie);
+  const [movieListWithWidth, setMovieListWithWidth] = useState([]);
 
 
   function handleOpenNavBar() {
@@ -98,30 +25,41 @@ function App() {
     setIsNavBarOpen(false);
   }
 
-  function loadMovieList() {
+  function loadMovieList(searchText, checkboxState) {
     moviesApi.getMovieList()
-      .then((res) => {setMovieListWithWidth(res)})
-      .catch(err => {console.log(err)});
+      // .then((res) => {setMovieListWithWidth(res)})
+      .then((res) => {
+        localStorage.setItem('searchResults', JSON.stringify(res));
+        localStorage.setItem('searchText', searchText);
+        localStorage.setItem('checkboxState', checkboxState)
+      })
+      // .then((res) => { console.log(res) })
+      .catch(err => { console.log(err) });
   }
 
   useEffect(() => {
     const windowWidth = document.documentElement.clientWidth;
     const arr = [];
-    arr.push(...testMovie);
-    if (700 > windowWidth) {
-      setMovieListWithWidth(arr.slice(0, 4));
+
+    console.log(JSON.parse(localStorage.getItem('searchResults')));
+    if (JSON.parse(localStorage.getItem('searchResults'))) {
+      arr.push(...JSON.parse(localStorage.getItem('searchResults')));
+      if (700 > windowWidth) {
+        setMovieListWithWidth(arr.slice(0, 4));
+      }
+      else if (800 > windowWidth) {
+        setMovieListWithWidth(arr.slice(0, 8));
+      }
+      else {
+        setMovieListWithWidth(arr.slice(0, 12));
+      };
     }
-    else if (800 > windowWidth) {
-      setMovieListWithWidth(arr.slice(0, 8));
-    }
-    else {
-      setMovieListWithWidth(arr.slice(0, 12));
-    }
+
   }, []);
 
   function handleAddMovie() {
     let arr = {};
-    arr = (testMovie.find(item => {
+    arr = (JSON.parse(localStorage.getItem('searchResults')).find(item => {
       return movieListWithWidth.every(elem => item !== elem);
     }))
     setMovieListWithWidth([...movieListWithWidth, arr]);

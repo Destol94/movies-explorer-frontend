@@ -1,22 +1,32 @@
+import { useState } from 'react';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import './SearchForm.css';
 
 function SearchForm(props) {
+  const [checkboxState, setCheckboxState] = useState(false);
+  function changeCheckBox() {
+    setCheckboxState(!checkboxState);
+  }
+
+  const [searchText, setSearchText] = useState('');
+  function handleChangeSearchText(e) {
+    setSearchText(e.target.value);
+  }
   
   function handleSubmit(e){
     debugger;
     e.preventDefault();
-    props.onLoadMovieList();
+    props.onLoadMovieList(searchText, checkboxState);
   }
   return (
     <div className="SearchForm">
       <form className="SearchForm__box" onSubmit={handleSubmit}>
         <div className="SearchForm__container-search">
-          <input className="SearchForm__input" placeholder="Фильм" required />
+          <input className="SearchForm__input" value={searchText} onChange={handleChangeSearchText} placeholder="Фильм" required />
           <button className="SearchForm__btn-submit" type="submit" >Найти</button>
           <div className="SearchForm__line" />
         </div>
-        <FilterCheckbox />
+        <FilterCheckbox checkboxState={checkboxState} handleChangeCheckBox={changeCheckBox} />
       </form>
       <div className="line" />
     </div>

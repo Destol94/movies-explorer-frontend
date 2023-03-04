@@ -106,17 +106,21 @@ function Movies(props) {
   //   }))
   //   setMovieListWithWidth([...movieListWithWidth, arr]);
   // };
-
+console.log(props.movieList.length);
   return (
     <div className="Movies">
       <Header loggedIn={props.loggedIn} handlerOpenNavBar={props.onNavBar} />
       <SearchForm onLoadMovieList={props.onLoadMovieList} />
-      <MoviesCardList
-        movieListRender={props.movieList}
-        saveMovie={props.saveMovie}
-        movieListOriginal={testMovie}
-        handleLoadCard={props.onAddMovieList}
-      />
+      {
+        props.movieList.length !== 0 &&
+        <MoviesCardList
+          movieListRender={props.movieList}
+          saveMovie={props.saveMovie}
+          movieListOriginal={testMovie}
+          handleLoadCard={props.onAddMovieList}
+        />
+      }
+
       <Footer />
     </div>
   )
