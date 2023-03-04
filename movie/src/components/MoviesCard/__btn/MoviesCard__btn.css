@@ -1,0 +1,11 @@
+.MoviesCard__btn {
+  padding: 0;
+  background: none;
+  cursor: pointer;
+  border-radius: 50%;
+  border: none;
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+  background-image: url(../../../images/inactiveCheckbox.svg);
+}

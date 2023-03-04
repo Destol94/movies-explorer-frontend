@@ -1,0 +1,27 @@
+@import url(./__title/Footer__title.css);
+@import url(./__signature/Footer__signature.css);
+@import url(./__year/Footer__year.css);
+@import url(./__links/Footer__links.css);
+@import url(./__link/Footer__link.css);
+
+.Footer {
+  padding: 80px 70px 20px;
+  font-size: 13px;
+  line-height: 15.73px;
+  font-weight: 400;
+  background-color: #202020;
+}
+
+@media screen and (max-width: 900px) {
+  .Footer {
+    padding: 80px 30px 20px;
+  }
+}
+
+@media screen and (max-width: 710px) {
+  .Footer {
+    padding: 80px 10px 20px;
+    font-size: 12px;
+    line-height: 15px;
+  }
+}

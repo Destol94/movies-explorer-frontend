@@ -1,0 +1,6 @@
+.MoviesCard__text {
+  text-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}

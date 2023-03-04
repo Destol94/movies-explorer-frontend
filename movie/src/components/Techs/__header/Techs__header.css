@@ -1,0 +1,21 @@
+.Techs__header.Techs__header {
+  font-weight: 400;
+  margin: 90px 0 0;
+  font-size: 50px;
+  line-height: 58px;
+  letter-spacing: -0.04em;
+}
+
+@media screen and (max-width: 900px) {
+  .Techs__header.Techs__header {
+    margin-top: 80px;
+  }
+}
+
+@media screen and (max-width: 710px) {
+  .Techs__header.Techs__header {
+    margin-top: 60px;
+    font-size: 30px;
+    line-height: 36px;
+  }
+}

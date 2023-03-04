@@ -1,0 +1,13 @@
+.NotFound__title {
+  margin: 0;
+  font-size: 140px;
+  font-weight: 400;
+  line-height: 169px;
+}
+
+@media screen and (max-width: 900px) {
+  .NotFound__title {
+    font-size: 80px;
+    line-height: 97px;
+  }
+}

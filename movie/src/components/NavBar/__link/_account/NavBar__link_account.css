@@ -1,0 +1,14 @@
+.NavBar__link_account {
+  border-radius: 50px;
+  height: 32px;
+  width: 100px;
+  border: solid 2px rgba(170, 170, 170, .2);
+  margin-bottom: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+  gap: 7px;
+}

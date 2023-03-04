@@ -1,0 +1,13 @@
+.Promo__explanations {
+  margin: 0;
+  opacity: .5;
+  font-size: 13px;
+  font-weight: 400;
+  max-width: 309px;
+}
+
+@media screen and (max-width: 900px) {
+  .Promo__explanations {
+    max-width: 260px;
+  }
+}

@@ -1,0 +1,33 @@
+.SearchForm__input {
+  flex-grow: 1;
+  padding: 0;
+  border: none;
+  height: 100%;
+  background-color: inherit;
+  outline: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.SearchForm__input:focus::parent   {
+  border: #fff solid 1px;
+}
+
+.SearchForm__input::placeholder {
+  background-image: url(../../../images/loupe.svg);
+  background-repeat: no-repeat;
+  background-position: 0 4px;
+  padding-left: 30px;
+}
+
+@media screen and (max-width: 710px) {
+  .SearchForm__input {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .SearchForm__input::placeholder {
+    background: none;
+    padding-left: 0;
+  }
+}

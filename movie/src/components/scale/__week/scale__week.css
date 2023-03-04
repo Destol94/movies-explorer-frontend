@@ -1,0 +1,14 @@
+.scale__week {
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+@media screen and (max-width: 710px) {
+  .scale__week {
+    height: 35px;
+    margin-bottom: 10px;
+  }
+}

@@ -1,0 +1,22 @@
+@import url(./__header/Portfolio__header.css);
+@import url(./__list/Portfolio__list.css);
+@import url(./__item/Portfolio__item.css);
+@import url(./__link/Portfolio__link.css);
+
+.Portfolio {
+  padding: 0 70px 125px;
+  text-align: start;
+  background-color: #202020;
+}
+
+@media screen and (max-width: 900px) {
+  .Portfolio {
+    padding: 0 50px 90px;
+  }
+}
+
+@media screen and (max-width: 710px) {
+  .Portfolio {
+    padding: 0 14px 70px;
+  }
+}
