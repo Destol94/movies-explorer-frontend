@@ -1,5 +1,5 @@
 import './App.css';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import Home from '../Home/Home';
 import { useEffect, useState } from 'react';
 import Movies from '../Movies/Movies';
@@ -9,15 +9,19 @@ import Register from '../Register/Register';
 import NotFound from '../NotFound/NotFound';
 import NavBar from '../NavBar/NavBar';
 import moviesApi from '../../utils/MoviesApi';
+import { useFormWithValidation } from '../../vendor/validationInputs/validationInputs';
+import { registration } from '../../utils/MainApi';
 
 
 function App() {
 
+  const formWithValidation = new useFormWithValidation();
   const [loggedIn, setLoggedIn] = useState(false);
   const [isNavBarOpen, setIsNavBarOpen] = useState(null);
   const [movieListWithWidth, setMovieListWithWidth] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  const navigate = useNavigate();
 
   function handleOpenNavBar() {
     setIsNavBarOpen(true);
@@ -36,27 +40,6 @@ function App() {
       })
       .catch(err => { console.log(err) });
   }
-
-  function renderMovie() {
-    const windowWidth = document.documentElement.clientWidth;
-    const arr = [];
-    if (JSON.parse(localStorage.getItem('searchResults'))) {
-      arr.push(...JSON.parse(localStorage.getItem('searchResults')));
-      if (700 > windowWidth) {
-        setMovieListWithWidth(arr.slice(0, 4));
-      }
-      else if (800 > windowWidth) {
-        setMovieListWithWidth(arr.slice(0, 8));
-      }
-      else {
-        setMovieListWithWidth(arr.slice(0, 12));
-      };
-    }
-  }
-
-  useEffect(() => {
-    renderMovie();
-  }, []);
 
   function handleAddMovie() {
     const windowWidth = document.documentElement.clientWidth;
@@ -77,6 +60,39 @@ function App() {
     console.log(arr);
     setMovieListWithWidth(arr);
   };
+
+  function renderMovie() {
+    const windowWidth = document.documentElement.clientWidth;
+    const arr = [];
+    if (JSON.parse(localStorage.getItem('searchResults'))) {
+      arr.push(...JSON.parse(localStorage.getItem('searchResults')));
+      if (700 > windowWidth) {
+        setMovieListWithWidth(arr.slice(0, 4));
+      }
+      else if (800 > windowWidth) {
+        setMovieListWithWidth(arr.slice(0, 8));
+      }
+      else {
+        setMovieListWithWidth(arr.slice(0, 12));
+      };
+    }
+  }
+
+  const cbRegistration = async (name, email, password) => {
+    try {
+      const data = await registration(name, email, password);
+      console.log(data);
+      if (!data) {
+        throw new Error('Ошибка регистрации');
+      }
+      setLoggedIn(true);
+      navigate("/movies");
+    } catch (err) { console.log(err) };
+  };
+
+  useEffect(() => {
+    renderMovie();
+  }, []);
 
   return (
     <div className="App">
@@ -104,8 +120,13 @@ function App() {
           />}
         />
         <Route path="/profile" element={<Profile loggedIn={loggedIn} onNavBar={handleOpenNavBar} />} />
-        <Route path="/signup" element={<Register />} />
-        <Route path="/signin" element={<Login />} />
+        <Route path="/signup" element={<Register
+          formWithValidation={formWithValidation}
+          onRegistration={cbRegistration}
+        />} />
+        <Route path="/signin" element={<Login
+          formWithValidation={formWithValidation}
+        />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <NavBar isOpen={isNavBarOpen} closeNavBar={handleCloseNavBar} />

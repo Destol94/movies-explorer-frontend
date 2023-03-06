@@ -5,6 +5,7 @@
 @import url(./__btn/MoviesCard__btn.css);
 @import url(./__btn/_active/MoviesCard__btn_active.css);
 @import url(./__btn/_cross/MoviesCard__btn_cross.css);
+@import url(./__link-trailer/MoviesCard__link-trailer.css);
 @import url(./__img/MoviesCard__img.css);
 
 .MoviesCard {

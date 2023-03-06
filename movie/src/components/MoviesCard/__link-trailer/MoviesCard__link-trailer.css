@@ -1,0 +1,9 @@
+.MoviesCard__link-trailer {
+  height: 203px;
+}
+
+@media screen and (max-width: 710px) {
+  .MoviesCard__link-trailer {
+    height: 168px;
+  }  
+}
