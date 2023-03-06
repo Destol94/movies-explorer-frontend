@@ -3,18 +3,20 @@ import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import './SearchForm.css';
 
 function SearchForm(props) {
-  const [checkboxState, setCheckboxState] = useState(false);
+  
+  const stateCheckBox = localStorage.getItem('checkboxState');
+  const [checkboxState, setCheckboxState] = useState(JSON.parse(stateCheckBox) || false);
   function changeCheckBox() {
     setCheckboxState(!checkboxState);
   }
 
-  const [searchText, setSearchText] = useState('');
+  const textSearchInput = localStorage.getItem('searchText');
+  const [searchText, setSearchText] = useState(textSearchInput || '');
   function handleChangeSearchText(e) {
     setSearchText(e.target.value);
   }
   
   function handleSubmit(e){
-    debugger;
     e.preventDefault();
     props.onLoadMovieList(searchText, checkboxState);
   }

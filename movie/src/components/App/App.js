@@ -16,6 +16,7 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [isNavBarOpen, setIsNavBarOpen] = useState(null);
   const [movieListWithWidth, setMovieListWithWidth] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
 
   function handleOpenNavBar() {
@@ -27,21 +28,18 @@ function App() {
 
   function loadMovieList(searchText, checkboxState) {
     moviesApi.getMovieList()
-      // .then((res) => {setMovieListWithWidth(res)})
       .then((res) => {
         localStorage.setItem('searchResults', JSON.stringify(res));
         localStorage.setItem('searchText', searchText);
-        localStorage.setItem('checkboxState', checkboxState)
+        localStorage.setItem('checkboxState', checkboxState);
+        renderMovie();
       })
-      // .then((res) => { console.log(res) })
       .catch(err => { console.log(err) });
   }
 
-  useEffect(() => {
+  function renderMovie() {
     const windowWidth = document.documentElement.clientWidth;
     const arr = [];
-
-    console.log(JSON.parse(localStorage.getItem('searchResults')));
     if (JSON.parse(localStorage.getItem('searchResults'))) {
       arr.push(...JSON.parse(localStorage.getItem('searchResults')));
       if (700 > windowWidth) {
@@ -54,15 +52,30 @@ function App() {
         setMovieListWithWidth(arr.slice(0, 12));
       };
     }
+  }
 
+  useEffect(() => {
+    renderMovie();
   }, []);
 
   function handleAddMovie() {
-    let arr = {};
-    arr = (JSON.parse(localStorage.getItem('searchResults')).find(item => {
-      return movieListWithWidth.every(elem => item !== elem);
-    }))
-    setMovieListWithWidth([...movieListWithWidth, arr]);
+    const windowWidth = document.documentElement.clientWidth;
+    let arr = movieListWithWidth.slice(0);
+    let numberFilmOfAdded = 0;
+    if (windowWidth < 1109) {
+      numberFilmOfAdded = 2;
+    }
+    else {
+      numberFilmOfAdded = 3;
+    }
+    for (let i = 0; i < numberFilmOfAdded; i++) {
+      let movie = (JSON.parse(localStorage.getItem('searchResults')).find(item => {
+        return arr.every(elem => item.id !== elem.id);
+      }))
+      arr.push(movie);
+    }
+    console.log(arr);
+    setMovieListWithWidth(arr);
   };
 
   return (
@@ -76,6 +89,7 @@ function App() {
             onAddMovieList={handleAddMovie}
             movieList={movieListWithWidth}
             onLoadMovieList={loadMovieList}
+            isLoading={isLoading}
           />}
         />
         <Route path="/saved-movies"
@@ -86,6 +100,7 @@ function App() {
             onAddMovieList={handleAddMovie}
             movieList={movieListWithWidth}
             onLoadMovieList={loadMovieList}
+            isLoading={isLoading}
           />}
         />
         <Route path="/profile" element={<Profile loggedIn={loggedIn} onNavBar={handleOpenNavBar} />} />

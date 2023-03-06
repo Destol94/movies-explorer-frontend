@@ -4,9 +4,8 @@ import './MoviesCardList.css';
 
 
 function MoviesCardList(props) {
-   
   return (
-    <div  className="MoviesCardList">
+    <div className="MoviesCardList">
       <div className="MoviesCardList__container">
         {
           props.movieListRender.map((movie, id) => (
@@ -14,7 +13,11 @@ function MoviesCardList(props) {
           ))
         }
       </div>
-      <button onClick={props.handleLoadCard} type="button" className="MoviesCardList__btn" >Ещё</button>
+      {
+        props.movieListRender.length > 3 &&
+        <button onClick={props.handleLoadCard} type="button" className="MoviesCardList__btn" >Ещё</button>
+      }
+
     </div>
   )
 }

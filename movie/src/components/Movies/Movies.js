@@ -3,7 +3,7 @@ import Header from '../Header/Header';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
-import { useEffect, useState } from 'react';
+import Preloader from '../Preloader/Preloader';
 
 const testMovie = [
   {
@@ -80,38 +80,13 @@ const testMovie = [
 ]
 
 function Movies(props) {
-
-  // const [movieListWithWidth, setMovieListWithWidth] = useState(testMovie);
-  // useEffect(() => {
-  //   const windowWidth = document.documentElement.clientWidth;
-  //   const arr = [];
-  //   arr.push(...testMovie);
-  //   if (700 > windowWidth) {
-  //     setMovieListWithWidth(arr.slice(0, 4));
-  //   }
-  //   else if (800 > windowWidth) {
-  //     setMovieListWithWidth(arr.slice(0, 8));
-  //   }
-  //   else {
-  //     setMovieListWithWidth(arr.slice(0, 12));
-  //   }
-  // }, []);
-
-
-  // function handleLoadCard() {
-  //   debugger;
-  //   let arr = {};
-  //   arr = (testMovie.find(item => {
-  //     return movieListWithWidth.every(elem => item !== elem);
-  //   }))
-  //   setMovieListWithWidth([...movieListWithWidth, arr]);
-  // };
-console.log(props.movieList.length);
   return (
     <div className="Movies">
       <Header loggedIn={props.loggedIn} handlerOpenNavBar={props.onNavBar} />
       <SearchForm onLoadMovieList={props.onLoadMovieList} />
       {
+        props.isLoading ? 
+        <Preloader /> :
         props.movieList.length !== 0 &&
         <MoviesCardList
           movieListRender={props.movieList}
