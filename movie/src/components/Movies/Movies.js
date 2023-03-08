@@ -90,9 +90,10 @@ function Movies(props) {
         props.movieList.length !== 0 &&
         <MoviesCardList
           movieListRender={props.movieList}
-          saveMovie={props.saveMovie}
+          isSaveMovie={props.isSaveMovie}
           movieListOriginal={testMovie}
           handleLoadCard={props.onAddMovieList}
+          handleSaveMovie={props.handleSaveMovie}
         />
       }
 

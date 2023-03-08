@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 function MoviesCard(props) {
   const [checkbox, setCheckbox] = useState(false);
   function handleChandgeBtn() {
+    props.handleSaveMovie(props.movie)
     setCheckbox(!checkbox);
   }
   function deleteMovie() {
@@ -21,7 +22,13 @@ function MoviesCard(props) {
           <p className="MoviesCard__name">{props.movie.nameRU}</p>
           <p className="MoviesCard__duration">{`${hour && `${hour}ч`} ${minutes}м`}</p>
         </div>
-        <button onClick={props.saveMovie ? deleteMovie : handleChandgeBtn} className={`${props.saveMovie ? 'MoviesCard__btn_cross' : btnSaveMovieClassName} MoviesCard__btn`} />
+        {
+          props.isSaveMovie ? 
+          <button onClick={deleteMovie} className="MoviesCard__btn_cross MoviesCard__btn" /> 
+          :
+          <button onClick={handleChandgeBtn} className={`${btnSaveMovieClassName} MoviesCard__btn`} />
+        }
+        {/* <button onClick={props.isSaveMovie ? deleteMovie : handleChandgeBtn} className={`${props.isSaveMovie ? 'MoviesCard__btn_cross' : btnSaveMovieClassName} MoviesCard__btn`} /> */}
       </div>
       <Link className="MoviesCard__link-trailer" to={props.movie.trailerLink} target="_blank">
         <img className="MoviesCard__img" alt="картинка к фильму" src={`https://api.nomoreparties.co/${props.movie.image.url}`} />

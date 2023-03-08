@@ -10,7 +10,7 @@ import NotFound from '../NotFound/NotFound';
 import NavBar from '../NavBar/NavBar';
 import moviesApi from '../../utils/MoviesApi';
 import { useFormWithValidation } from '../../vendor/validationInputs/validationInputs';
-import { registration } from '../../utils/MainApi';
+import { autorization, registration, saveMovie } from '../../utils/MainApi';
 
 
 function App() {
@@ -85,10 +85,34 @@ function App() {
       if (!data) {
         throw new Error('Ошибка регистрации');
       }
-      setLoggedIn(true);
-      navigate("/movies");
+      if (data.jwt) {
+        localStorage.setItem('jwt', data.jwt);
+        setLoggedIn(true);
+        navigate("/movies");
+      }
     } catch (err) { console.log(err) };
   };
+
+  const cbAutorization = async (email, password) => {
+    try {
+      const jwt = await autorization(email, password);
+      if (!jwt) {
+        throw new Error('Ошибка входа');
+      }
+      if (jwt.token) {
+        localStorage.setItem('jwt', jwt.token);
+        setLoggedIn(true);
+        navigate("/movies");
+      }
+    } catch (error) { console.log(error) }
+  }
+
+  const handleSaveMovie = async (movie) => {
+    try {
+      const res = await saveMovie({ movie });
+      console.log(res);
+    } catch (err) { console.log(err) }
+  }
 
   useEffect(() => {
     renderMovie();
@@ -106,12 +130,13 @@ function App() {
             movieList={movieListWithWidth}
             onLoadMovieList={loadMovieList}
             isLoading={isLoading}
+            handleSaveMovie={handleSaveMovie}
           />}
         />
         <Route path="/saved-movies"
           element={<Movies
             loggedIn={loggedIn}
-            saveMovie={true}
+            isSaveMovie={true}
             onNavBar={handleOpenNavBar}
             onAddMovieList={handleAddMovie}
             movieList={movieListWithWidth}
@@ -126,6 +151,7 @@ function App() {
         />} />
         <Route path="/signin" element={<Login
           formWithValidation={formWithValidation}
+          onLogin={cbAutorization}
         />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

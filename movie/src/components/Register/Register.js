@@ -2,7 +2,7 @@ import RouteWithForm from '../RouteWithForm/RouteWithForm';
 import './Register.css';
 
 function Register(props) {
-const {name, email, password} = props.formWithValidation.values;
+  const { name, email, password } = props.formWithValidation.values;
   const formSubmit = (e) => {
     e.preventDefault();
     props.onRegistration(name, email, password);

@@ -9,7 +9,7 @@ function MoviesCardList(props) {
       <div className="MoviesCardList__container">
         {
           props.movieListRender.map((movie, id) => (
-            <MoviesCard movie={movie} key={id} saveMovie={props.saveMovie} />
+            <MoviesCard movie={movie} key={id} isSaveMovie={props.isSaveMovie} handleSaveMovie={props.handleSaveMovie} />
           ))
         }
       </div>
