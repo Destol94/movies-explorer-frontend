@@ -2,6 +2,8 @@
 @import url(./__name/Profile__name.css);
 @import url(./__info-box/Profile__info-box.css);
 @import url(./__info-item/Profile__info-item.css);
+@import url(./__input/Profile__input.css);
+@import url(./__span-error/Profile__span-error.css);
 @import url(./__button-box/Profile__button-box.css);
 @import url(./__btn/Profile__btn.css);
 @import url(./__btn/_edit/Profile__btn_edit.css);

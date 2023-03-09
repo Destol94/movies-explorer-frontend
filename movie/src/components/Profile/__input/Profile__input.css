@@ -1,0 +1,12 @@
+.Profile__input {
+  background: none;
+  padding: 0;
+  color: #fff;
+  border: none;
+  text-align: end;
+  border-radius: 6px;
+  outline: none;
+}
+.Profile__input:hover {
+  color: #ffcfcf;
+}

@@ -1,7 +1,7 @@
 import './App.css';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import Home from '../Home/Home';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import Movies from '../Movies/Movies';
 import Profile from '../Profile/Profile';
 import Login from '../Login/Login';
@@ -10,7 +10,8 @@ import NotFound from '../NotFound/NotFound';
 import NavBar from '../NavBar/NavBar';
 import moviesApi from '../../utils/MoviesApi';
 import { useFormWithValidation } from '../../vendor/validationInputs/validationInputs';
-import { autorization, registration, saveMovie } from '../../utils/MainApi';
+import { autorization, changeProfile, registration, saveMovie } from '../../utils/MainApi';
+import CurrentUserContext from '../../context/CurrentUserContext';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [isNavBarOpen, setIsNavBarOpen] = useState(null);
   const [movieListWithWidth, setMovieListWithWidth] = useState([]);
+  const [currentUser, setCurrentUser] = useState({})
   const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
@@ -95,15 +97,14 @@ function App() {
 
   const cbAutorization = async (email, password) => {
     try {
-      const jwt = await autorization(email, password);
-      if (!jwt) {
+      const user = await autorization(email, password);
+      if (!user) {
         throw new Error('Ошибка входа');
       }
-      if (jwt.token) {
-        localStorage.setItem('jwt', jwt.token);
-        setLoggedIn(true);
-        navigate("/movies");
-      }
+      // localStorage.setItem('jwt', jwt.token);
+      setCurrentUser(user);
+      setLoggedIn(true);
+      navigate("/movies");
     } catch (error) { console.log(error) }
   }
 
@@ -114,49 +115,78 @@ function App() {
     } catch (err) { console.log(err) }
   }
 
+  const handleChangeProfile = async (email, name) => {
+    try {
+      const res = await changeProfile(email, name);
+      if (!res) {
+        throw new Error('Ошибка обновления пользователя');
+      }
+      console.log(res);
+      setCurrentUser(res);
+    } catch (error) { console.log(error) };
+  }
+
+  const cbLogout = useCallback(() => {
+    localStorage.clear();
+    setLoggedIn(false);
+    navigate("/");
+  }, [navigate]);
+
   useEffect(() => {
     renderMovie();
   }, []);
 
   return (
-    <div className="App">
-      <Routes>
-        <Route path="/" element={<Home loggedIn={loggedIn} onNavBar={handleOpenNavBar} />} />
-        <Route path="/movies"
-          element={<Movies
-            loggedIn={loggedIn}
-            onNavBar={handleOpenNavBar}
-            onAddMovieList={handleAddMovie}
-            movieList={movieListWithWidth}
-            onLoadMovieList={loadMovieList}
-            isLoading={isLoading}
-            handleSaveMovie={handleSaveMovie}
-          />}
-        />
-        <Route path="/saved-movies"
-          element={<Movies
-            loggedIn={loggedIn}
-            isSaveMovie={true}
-            onNavBar={handleOpenNavBar}
-            onAddMovieList={handleAddMovie}
-            movieList={movieListWithWidth}
-            onLoadMovieList={loadMovieList}
-            isLoading={isLoading}
-          />}
-        />
-        <Route path="/profile" element={<Profile loggedIn={loggedIn} onNavBar={handleOpenNavBar} />} />
-        <Route path="/signup" element={<Register
-          formWithValidation={formWithValidation}
-          onRegistration={cbRegistration}
-        />} />
-        <Route path="/signin" element={<Login
-          formWithValidation={formWithValidation}
-          onLogin={cbAutorization}
-        />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-      <NavBar isOpen={isNavBarOpen} closeNavBar={handleCloseNavBar} />
-    </div>
+    <CurrentUserContext.Provider value={currentUser} >
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Home loggedIn={loggedIn} onNavBar={handleOpenNavBar} />} />
+          <Route path="/movies"
+            element={<Movies
+              loggedIn={loggedIn}
+              onNavBar={handleOpenNavBar}
+              onAddMovieList={handleAddMovie}
+              movieList={movieListWithWidth}
+              onLoadMovieList={loadMovieList}
+              isLoading={isLoading}
+              handleSaveMovie={handleSaveMovie}
+            />}
+          />
+          <Route path="/saved-movies"
+            element={<Movies
+              loggedIn={loggedIn}
+              isSaveMovie={true}
+              onNavBar={handleOpenNavBar}
+              onAddMovieList={handleAddMovie}
+              movieList={movieListWithWidth}
+              onLoadMovieList={loadMovieList}
+              isLoading={isLoading}
+            />}
+          />
+          <Route path="/profile"
+            element={<Profile
+              loggedIn={loggedIn}
+              onNavBar={handleOpenNavBar}
+              onLogout={cbLogout}
+              onSubmit={handleChangeProfile}
+            />}
+          />
+          <Route path="/signup"
+            element={<Register
+              formWithValidation={formWithValidation}
+              onRegistration={cbRegistration}
+            />} />
+          <Route path="/signin"
+            element={<Login
+              formWithValidation={formWithValidation}
+              onLogin={cbAutorization}
+            />}
+          />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+        <NavBar isOpen={isNavBarOpen} closeNavBar={handleCloseNavBar} />
+      </div>
+    </CurrentUserContext.Provider>
   );
 }
 

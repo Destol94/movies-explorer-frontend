@@ -12,7 +12,7 @@ export const registration = async (name, email, password) => {
       "password": `${password}`
     })
   })
-  return checkResposne(res);
+  return checkResponse(res);
 }
 
 export const autorization = async (email, password) => {
@@ -26,7 +26,7 @@ export const autorization = async (email, password) => {
       "password": `${password}`
     })
   })
-  return checkResposne(res);
+  return checkResponse(res);
 }
 
 export const saveMovie = async (movie) => {
@@ -38,9 +38,24 @@ export const saveMovie = async (movie) => {
     },
     body: JSON.stringify({ ...movie })
   })
-  return checkResposne(res);
+  return checkResponse(res);
 }
 
-const checkResposne = res => {
+export const changeProfile = async (email, name) => {
+  const res = await fetch(`${BASE_URL}/me`, {
+    method: "PATCH",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      "email": `${email}`,
+      "name": `${name}`
+    })
+  })
+  return checkResponse(res);
+}
+
+const checkResponse = res => {
   return res.ok ? res.json() : Promise.reject(`${res.statusText}`);
 }

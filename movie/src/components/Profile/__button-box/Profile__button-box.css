@@ -5,4 +5,11 @@
   width: fit-content;
   align-items: center;
   gap: 16px;
+  margin-top: 220px;
+}
+
+@media screen and (max-width: 900px) {
+  .Profile__button-box {
+    margin-top: 205px;
+  }  
 }
