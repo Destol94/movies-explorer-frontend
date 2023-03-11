@@ -3,12 +3,9 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 function MoviesCard(props) {
-  const fullSaveMovie = JSON.parse(localStorage.getItem('fullSaveMovie'));
-  const savedMovie = fullSaveMovie.find(item => { return props.movie.id === item.movieId });
-  // console.log(savedMovie);
+  const savedMovie = props.fullSaveMovieList ? props.fullSaveMovieList.find(item => { return props.movie.id === item.movieId }) : '';
   const [checkbox, setCheckbox] = useState(savedMovie);
   function handleChandgeBtn() {
-    debugger
     if (savedMovie) {
       props.handleDeleteMovie(savedMovie._id, setCheckbox);
     }

@@ -21,6 +21,7 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [isNavBarOpen, setIsNavBarOpen] = useState(null);
   const [movieListWithWidth, setMovieListWithWidth] = useState([]);
+  const [fullSaveMovieList, setFullSaveMovieList] = useState([]);
   const [saveMovieList, setSaveMovieList] = useState([]);
   const [currentUser, setCurrentUser] = useState({})
   const [isLoading, setIsLoading] = useState(false);
@@ -34,10 +35,53 @@ function App() {
     setIsNavBarOpen(false);
   }
 
-  function setSearchValues(searchText, checkboxState) {
-    renderMovie();
+  function searchMovies(searchText, checkboxState) {
     localStorage.setItem('searchText', searchText);
     localStorage.setItem('checkboxState', checkboxState);
+    const keyString = searchText.toLowerCase();
+    const defaultMovieList = JSON.parse(localStorage.getItem('defaultMovieList'));
+
+    const findMovie = (film) => {
+      return film.country.toLowerCase().indexOf(keyString) !== -1 ||
+      film.description.toLowerCase().indexOf(keyString) !== -1 ||
+      film.director.toLowerCase().indexOf(keyString) !== -1 ||
+      film.nameEN.toLowerCase().indexOf(keyString) !== -1 ||
+      film.nameRU.toLowerCase().indexOf(keyString) !== -1 ||
+      film.year.toLowerCase().indexOf(keyString) !== -1
+    }
+    let arr = [];
+    if (checkboxState) {
+      arr = defaultMovieList.filter(film => film.duration < 41 && findMovie(film));
+    } else {
+      arr = defaultMovieList.filter(findMovie);
+    }
+    localStorage.setItem('searchResults', JSON.stringify(arr));
+    renderingMovies(arr);
+    setIsLoading(false);
+  }
+  function searchSavedMovies(searchText, checkboxState) {
+    renderingMovies();
+    localStorage.setItem('searchText', searchText);
+    localStorage.setItem('checkboxState', checkboxState);
+    const keyString = searchText.toLowerCase();
+    const defaultMovieList = fullSaveMovieList;
+
+    const findMovie = (film) => {
+      return film.country.toLowerCase().indexOf(keyString) !== -1 ||
+      film.description.toLowerCase().indexOf(keyString) !== -1 ||
+      film.director.toLowerCase().indexOf(keyString) !== -1 ||
+      film.nameEN.toLowerCase().indexOf(keyString) !== -1 ||
+      film.nameRU.toLowerCase().indexOf(keyString) !== -1 ||
+      film.year.toLowerCase().indexOf(keyString) !== -1
+    }
+    let arr = [];
+    if (checkboxState) {
+      arr = defaultMovieList.filter(film => film.duration < 41 && findMovie(film));
+    } else {
+      arr = defaultMovieList.filter(findMovie);
+    }
+    localStorage.setItem('searchSaveResults', JSON.stringify(arr));
+    renderingSavedMovies(arr);
     setIsLoading(false);
   }
 
@@ -55,16 +99,15 @@ function App() {
       let movie = (JSON.parse(localStorage.getItem('searchResults')).find(item => {
         return arr.every(elem => item.id !== elem.id);
       }))
-      if(movie) {
+      if (movie) {
         arr.push(movie);
       }
     }
-    console.log(arr);
     setMovieListWithWidth(arr);
   };
+
   async function handleAddSaveMovie() {
     const windowWidth = document.documentElement.clientWidth;
-    const initialList = await loadMovieList();
     let arr = saveMovieList.slice(0);
     let numberFilmOfAdded = 0;
     if (windowWidth < 1109) {
@@ -74,22 +117,21 @@ function App() {
       numberFilmOfAdded = 3;
     }
     for (let i = 0; i < numberFilmOfAdded; i++) {
-      let movie = initialList.find(item => {
+      let movie = JSON.parse(localStorage.getItem('searchSaveResults')).find(item => {
         return arr.every(elem => item._id !== elem._id);
       })
-      if(movie) {
+      if (movie) {
         arr.push(movie);
       }
     }
-    console.log(arr);
     setSaveMovieList(arr);
   };
 
-  function renderMovie() {
+  function renderingMovies(array) {
     const windowWidth = document.documentElement.clientWidth;
     const arr = [];
-    if (JSON.parse(localStorage.getItem('searchResults'))) {
-      arr.push(...JSON.parse(localStorage.getItem('searchResults')));
+    if (array) {
+      arr.push(...array);
       if (700 > windowWidth) {
         setMovieListWithWidth(arr.slice(0, 4));
       }
@@ -101,21 +143,19 @@ function App() {
       };
     }
   }
-  async function renderingSavedMovies(list, listMovie, setListMovie) {
+  function renderingSavedMovies(list) {
     const windowWidth = document.documentElement.clientWidth;
     const arr = [];
-    // if (listMovie) {
-      arr.push(...list);
-      if (700 > windowWidth) {
-        setListMovie(arr.slice(0, 4));
-      }
-      else if (800 > windowWidth) {
-        setListMovie(arr.slice(0, 8));
-      }
-      else {
-        setListMovie(arr.slice(0, 12));
-      };
-    // }
+    arr.push(...list);
+    if (700 > windowWidth) {
+      setSaveMovieList(arr.slice(0, 4));
+    }
+    else if (800 > windowWidth) {
+      setSaveMovieList(arr.slice(0, 8));
+    }
+    else {
+      setSaveMovieList(arr.slice(0, 12));
+    };
   }
 
   const cbRegistration = async (name, email, password) => {
@@ -148,8 +188,8 @@ function App() {
   const handleSaveMovie = async (movie, setCheckbox) => {
     try {
       const res = await saveMovie(movie);
-      if(res) {
-        // setSaveMovieList([...saveMovieList, res]);
+      if (res) {
+        setFullSaveMovieList([...fullSaveMovieList, res]);
         setCheckbox(true);
       }
     } catch (err) { console.log(err) }
@@ -160,7 +200,8 @@ function App() {
       const res = await deleteMovie(id);
       if (res) {
         setSaveMovieList((saveMovieList) => { return saveMovieList.filter(item => { return item._id !== res._id }) });
-        if(setCheckbox) {
+        setFullSaveMovieList((fullSaveMovieList) => { return fullSaveMovieList.filter(item => { return item._id !== res._id }) });
+        if (setCheckbox) {
           setCheckbox(false);
         }
       }
@@ -173,7 +214,6 @@ function App() {
       if (!res) {
         throw new Error('Ошибка обновления пользователя');
       }
-      console.log(res);
       setIsLoading(false);
       setCurrentUser(res);
     } catch (error) { console.log(error) };
@@ -186,16 +226,16 @@ function App() {
     hadleLogout();
     localStorage.clear();
     setLoggedIn(false);
+    setCurrentUser({});
     navigate("/");
   }, [navigate]);
 
   const loadSaveMovie = useCallback(async () => {
     try {
       const res = await loadMovieList();
-      localStorage.setItem('fullSaveMovie', JSON.stringify(res));
       if (res) {
-        renderingSavedMovies(res, saveMovieList, setSaveMovieList);
-        // setSaveMovieList(res);
+        renderingSavedMovies(res);
+        setFullSaveMovieList(res);
       }
     } catch (err) { console.log(err) }
   }, [])
@@ -203,7 +243,7 @@ function App() {
   function loadDefaultListMovie() {
     moviesApi.getDefaultMovieList()
       .then((res) => {
-        localStorage.setItem('searchResults', JSON.stringify(res));
+        localStorage.setItem('defaultMovieList', JSON.stringify(res));
       })
       .catch(err => { console.log(err) });
   }
@@ -230,6 +270,7 @@ function App() {
       setCurrentUser(res);
       setLoggedIn(true);
     }
+    else setLoggedIn(false);
   };
   useEffect(() => {
     handleTokenCheck();
@@ -247,12 +288,13 @@ function App() {
                 onNavBar={handleOpenNavBar}
                 onAddMovieList={handleAddMovie}
                 movieList={movieListWithWidth}
-                onLoadMovieList={setSearchValues}
+                searchMovies={searchMovies}
                 isLoading={isLoading}
                 handleSaveMovie={handleSaveMovie}
                 handleDeleteMovie={handleDeleteMovie}
                 setIsLoading={setIsLoading}
-                saveMovieList={saveMovieList}
+                fullSaveMovieList={fullSaveMovieList}
+                resSearch={JSON.parse(localStorage.getItem('searchResults'))}
               />}
             />
             <Route path="/saved-movies"
@@ -262,9 +304,11 @@ function App() {
                 onNavBar={handleOpenNavBar}
                 onAddMovieList={handleAddSaveMovie}
                 movieList={saveMovieList}
-                onLoadMovieList={setSearchValues}
+                searchMovies={searchSavedMovies}
                 isLoading={isLoading}
                 handleDeleteMovie={handleDeleteMovie}
+                fullSaveMovieList={fullSaveMovieList}
+                resSearch={JSON.parse(localStorage.getItem('searchSaveResults'))}
               />}
             />
             <Route path="/profile"
@@ -278,16 +322,6 @@ function App() {
               />}
             />
           </Route>
-          {/* <Route path="/profile"
-            element={<Profile
-              loggedIn={loggedIn}
-              onNavBar={handleOpenNavBar}
-              onLogout={cbLogout}
-              onSubmit={handleChangeProfile}
-              isLoading={isLoading}
-              setIsLoading={setIsLoading}
-            />}
-          /> */}
           <Route path="/signup"
             element={<Register
               formWithValidation={formWithValidation}

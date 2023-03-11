@@ -6,6 +6,7 @@
   align-items: center;
   padding: 0 30px;
   margin: 70px auto;
+  position: relative;
 }
 
 .SearchForm__box:focus {

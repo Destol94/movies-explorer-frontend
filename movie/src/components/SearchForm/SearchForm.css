@@ -3,6 +3,7 @@
 @import url(./__container-search/SearchForm__container-search.css);
 @import url(./__input/SearchForm__input.css);
 @import url(./__line/SearchForm__line.css);
+@import url(./__box/_span-error/SearchForm__box_span-error.css);
 
 .SearchForm {
   padding: 0 70px;

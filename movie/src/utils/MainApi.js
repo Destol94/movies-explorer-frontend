@@ -3,6 +3,7 @@ const BASE_URL = 'http://localhost:3001';
 export const registration = async (name, email, password) => {
   const res = await fetch(`${BASE_URL}/signup`, {
     method: "POST",
+    credentials: "include",
     headers: {
       "Content-Type": "application/json",
     },
