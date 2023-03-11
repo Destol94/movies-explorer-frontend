@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import CurrentUserContext from '../../context/CurrentUserContext';
 import { useFormWithValidation } from '../../vendor/validationInputs/validationInputs';
 import Header from '../Header/Header';
+import Preloader from '../Preloader/Preloader';
 import './Profile.css';
 
 function Profile(props) {
@@ -10,6 +11,7 @@ function Profile(props) {
   const { values, handleChange, errors, isValid, resetForm, setValues } = useFormWithValidation();
   function handleSubmit(e) {
     e.preventDefault();
+    props.setIsLoading(true);
     props.onSubmit(values.email, values.name);
     resetForm();
   }
@@ -24,7 +26,7 @@ function Profile(props) {
             <p className="">Имя</p>
             <input className="Profile__input"
               name="name"
-              defaultValue={values.name}
+              value={values.name}
               onChange={handleChange}
               minLength="2" maxLength="40" required
               type="text"
@@ -37,7 +39,7 @@ function Profile(props) {
             <p className="">E-mail</p>
             <input className="Profile__input"
               name="email"
-              defaultValue={values.email}
+              value={values.email}
               onChange={handleChange}
               type="email"
               required
@@ -46,6 +48,9 @@ function Profile(props) {
             <span className="Profile__span-error">{errors.email}</span>
           </label>
         </div>
+        {
+          props.isLoading && <Preloader addedClass="Profile__preloader" />
+        }
         <div className="Profile__button-box">
           <button type="submit"
             disabled={(currentUser.email === values.email && currentUser.name === values.name) || !isValid}

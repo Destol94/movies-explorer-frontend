@@ -2,6 +2,7 @@
   margin: 74px auto 0;
   color: #fff;
   width: 410px;
+  position: relative;
 }
 
 @media screen and (max-width: 900px) {

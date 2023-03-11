@@ -3,13 +3,19 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 function MoviesCard(props) {
-  const [checkbox, setCheckbox] = useState(false);
+  const fullSaveMovie = JSON.parse(localStorage.getItem('fullSaveMovie'));
+  const savedMovie = fullSaveMovie.find(item => { return props.movie.id === item.movieId });
+  // console.log(savedMovie);
+  const [checkbox, setCheckbox] = useState(savedMovie);
   function handleChandgeBtn() {
-    props.handleSaveMovie(props.movie)
-    setCheckbox(!checkbox);
+    debugger
+    if (savedMovie) {
+      props.handleDeleteMovie(savedMovie._id, setCheckbox);
+    }
+    else props.handleSaveMovie(props.movie, setCheckbox);
   }
   function deleteMovie() {
-    console.log('фильм удалён :)')
+    props.handleDeleteMovie(props.movie._id);
   }
   const btnSaveMovieClassName = (`${checkbox && 'MoviesCard__btn_active'}`);
 
@@ -23,15 +29,14 @@ function MoviesCard(props) {
           <p className="MoviesCard__duration">{`${hour && `${hour}ч`} ${minutes}м`}</p>
         </div>
         {
-          props.isSaveMovie ? 
-          <button onClick={deleteMovie} className="MoviesCard__btn_cross MoviesCard__btn" /> 
-          :
-          <button onClick={handleChandgeBtn} className={`${btnSaveMovieClassName} MoviesCard__btn`} />
+          props.isSaveMovie ?
+            <button onClick={deleteMovie} className="MoviesCard__btn_cross MoviesCard__btn" />
+            :
+            <button onClick={handleChandgeBtn} className={`${btnSaveMovieClassName} MoviesCard__btn`} />
         }
-        {/* <button onClick={props.isSaveMovie ? deleteMovie : handleChandgeBtn} className={`${props.isSaveMovie ? 'MoviesCard__btn_cross' : btnSaveMovieClassName} MoviesCard__btn`} /> */}
       </div>
       <Link className="MoviesCard__link-trailer" to={props.movie.trailerLink} target="_blank">
-        <img className="MoviesCard__img" alt="картинка к фильму" src={`https://api.nomoreparties.co/${props.movie.image.url}`} />
+        <img className="MoviesCard__img" alt="картинка к фильму" src={`${props.isSaveMovie ? props.movie.image : `https://api.nomoreparties.co/${props.movie.image.url}`}`} />
       </Link>
     </div>
   )

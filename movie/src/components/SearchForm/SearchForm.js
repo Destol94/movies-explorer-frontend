@@ -18,6 +18,7 @@ function SearchForm(props) {
   
   function handleSubmit(e){
     e.preventDefault();
+    props.setIsLoading(true);
     props.onLoadMovieList(searchText, checkboxState);
   }
   return (
