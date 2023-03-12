@@ -7,7 +7,6 @@ import Preloader from '../Preloader/Preloader';
 
 
 function Movies(props) {
-  console.log(props.isLoading);
   const setLoading = () => { return props.setIsLoading(true) };
 
   return (

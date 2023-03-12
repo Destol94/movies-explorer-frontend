@@ -85,6 +85,9 @@ function App() {
     localStorage.setItem('searchResults', JSON.stringify(arr));
     renderingMovies(arr);
     setIsLoading(false);
+    if(arr.length === 0) {
+      return arr.length;
+    }
   }
   function searchSavedMovies(searchText, checkboxState) {
     renderingMovies();

@@ -3,7 +3,6 @@ import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import './SearchForm.css';
 
 function SearchForm(props) {
-console.log(props.isLoading)
   const stateCheckBox = localStorage.getItem('checkboxState');
   const [checkboxState, setCheckboxState] = useState(JSON.parse(stateCheckBox) || false);
   function changeCheckBox() {
@@ -19,12 +18,15 @@ console.log(props.isLoading)
       setErrorText('Нужно ввести ключевое слово');
     } else { setErrorText(e.target.validationMessage) }
   }
-
+  const [isFound, setIsFound] = useState(false);
   function handleSubmit(e) {
+    setIsFound(false);
     e.preventDefault();
     props.setIsLoading();
-    console.log(props.isLoading);
-    props.searchMovies(searchText, checkboxState);
+    const resLenght = props.searchMovies(searchText, checkboxState);
+    if (resLenght === 0) {
+      setIsFound(true);
+    }
   }
   return (
     <div className="SearchForm">
@@ -36,6 +38,9 @@ console.log(props.isLoading)
         </div>
         <FilterCheckbox checkboxState={checkboxState} handleChangeCheckBox={changeCheckBox} />
         <span className="SearchForm__box_span-error">{errorText}</span>
+        {
+          isFound && <span className="SearchForm__box-found">Ничего не найдено</span>
+        }
       </form>
       <div className="line" />
     </div>
