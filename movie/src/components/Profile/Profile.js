@@ -15,7 +15,6 @@ function Profile(props) {
     props.onSubmit(values.email, values.name);
     resetForm();
   }
-
   return (
     <div className="Profile">
       <Header loggedIn={props.loggedIn} handlerOpenNavBar={props.onNavBar} />

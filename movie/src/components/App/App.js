@@ -282,7 +282,7 @@ function App() {
   };
   useEffect(() => {
     handleTokenCheck();
-  }, [loggedIn]);
+  }, []);
 
   return (
     <CurrentUserContext.Provider value={currentUser} >
