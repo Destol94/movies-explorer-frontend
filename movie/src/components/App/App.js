@@ -35,6 +35,33 @@ function App() {
     setIsNavBarOpen(false);
   }
 
+  const cbRegistration = async (name, email, password) => {
+    try {
+      const data = await registration(name, email, password);
+      console.log(data);
+      if (!data) {
+        throw new Error('Ошибка регистрации');
+      }
+      setCurrentUser(data);
+      setLoggedIn(true);
+      navigate("/movies");
+    } catch (err) { console.log(err) };
+  };
+
+  const cbAutorization = async (email, password) => {
+    try {
+      const user = await autorization(email, password);
+      if (!user) {
+        throw new Error('Ошибка входа');
+      }
+      setCurrentUser(user);
+      setLoggedIn(true);
+      navigate("/movies");
+    } catch (error) { console.log(error) }
+  }
+
+
+
   function searchMovies(searchText, checkboxState) {
     localStorage.setItem('searchText', searchText);
     localStorage.setItem('checkboxState', checkboxState);
@@ -43,11 +70,11 @@ function App() {
 
     const findMovie = (film) => {
       return film.country.toLowerCase().indexOf(keyString) !== -1 ||
-      film.description.toLowerCase().indexOf(keyString) !== -1 ||
-      film.director.toLowerCase().indexOf(keyString) !== -1 ||
-      film.nameEN.toLowerCase().indexOf(keyString) !== -1 ||
-      film.nameRU.toLowerCase().indexOf(keyString) !== -1 ||
-      film.year.toLowerCase().indexOf(keyString) !== -1
+        film.description.toLowerCase().indexOf(keyString) !== -1 ||
+        film.director.toLowerCase().indexOf(keyString) !== -1 ||
+        film.nameEN.toLowerCase().indexOf(keyString) !== -1 ||
+        film.nameRU.toLowerCase().indexOf(keyString) !== -1 ||
+        film.year.toLowerCase().indexOf(keyString) !== -1
     }
     let arr = [];
     if (checkboxState) {
@@ -68,11 +95,11 @@ function App() {
 
     const findMovie = (film) => {
       return film.country.toLowerCase().indexOf(keyString) !== -1 ||
-      film.description.toLowerCase().indexOf(keyString) !== -1 ||
-      film.director.toLowerCase().indexOf(keyString) !== -1 ||
-      film.nameEN.toLowerCase().indexOf(keyString) !== -1 ||
-      film.nameRU.toLowerCase().indexOf(keyString) !== -1 ||
-      film.year.toLowerCase().indexOf(keyString) !== -1
+        film.description.toLowerCase().indexOf(keyString) !== -1 ||
+        film.director.toLowerCase().indexOf(keyString) !== -1 ||
+        film.nameEN.toLowerCase().indexOf(keyString) !== -1 ||
+        film.nameRU.toLowerCase().indexOf(keyString) !== -1 ||
+        film.year.toLowerCase().indexOf(keyString) !== -1
     }
     let arr = [];
     if (checkboxState) {
@@ -158,38 +185,13 @@ function App() {
     };
   }
 
-  const cbRegistration = async (name, email, password) => {
-    try {
-      const data = await registration(name, email, password);
-      console.log(data);
-      if (!data) {
-        throw new Error('Ошибка регистрации');
-      }
-      if (data.jwt) {
-        localStorage.setItem('jwt', data.jwt);
-        setLoggedIn(true);
-        navigate("/movies");
-      }
-    } catch (err) { console.log(err) };
-  };
-
-  const cbAutorization = async (email, password) => {
-    try {
-      const user = await autorization(email, password);
-      if (!user) {
-        throw new Error('Ошибка входа');
-      }
-      setCurrentUser(user);
-      setLoggedIn(true);
-      navigate("/movies");
-    } catch (error) { console.log(error) }
-  }
 
   const handleSaveMovie = async (movie, setCheckbox) => {
     try {
       const res = await saveMovie(movie);
       if (res) {
         setFullSaveMovieList([...fullSaveMovieList, res]);
+        setSaveMovieList([...saveMovieList, res]);
         setCheckbox(true);
       }
     } catch (err) { console.log(err) }
@@ -225,6 +227,7 @@ function App() {
   const cbLogout = useCallback(() => {
     hadleLogout();
     localStorage.clear();
+    setMovieListWithWidth([]);
     setLoggedIn(false);
     setCurrentUser({});
     navigate("/");
@@ -259,8 +262,10 @@ function App() {
   useEffect(() => {
     if (loggedIn) {
       loadDefaultListMovie();
-      // renderMovie();
-      // renderMovie(loadSaveMovie, saveMovieList, setSaveMovieList);
+      const searchResults = JSON.parse(localStorage.getItem('searchResults'))
+      if (searchResults) {
+        setMovieListWithWidth(searchResults);
+      }
     }
   }, [loggedIn]);
 
@@ -307,6 +312,7 @@ function App() {
                 searchMovies={searchSavedMovies}
                 isLoading={isLoading}
                 handleDeleteMovie={handleDeleteMovie}
+                setIsLoading={setIsLoading}
                 fullSaveMovieList={fullSaveMovieList}
                 resSearch={JSON.parse(localStorage.getItem('searchSaveResults'))}
               />}

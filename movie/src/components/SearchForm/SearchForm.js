@@ -3,7 +3,7 @@ import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import './SearchForm.css';
 
 function SearchForm(props) {
-
+console.log(props.isLoading)
   const stateCheckBox = localStorage.getItem('checkboxState');
   const [checkboxState, setCheckboxState] = useState(JSON.parse(stateCheckBox) || false);
   function changeCheckBox() {
@@ -23,6 +23,7 @@ function SearchForm(props) {
   function handleSubmit(e) {
     e.preventDefault();
     props.setIsLoading();
+    console.log(props.isLoading);
     props.searchMovies(searchText, checkboxState);
   }
   return (

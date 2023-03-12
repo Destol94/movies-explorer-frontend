@@ -8,15 +8,15 @@ import Preloader from '../Preloader/Preloader';
 
 function Movies(props) {
   console.log(props.isLoading);
-  function setLoading () {
-    props.setIsLoading(true);
-  }
+  const setLoading = () => { return props.setIsLoading(true) };
+
   return (
     <div className="Movies">
       <Header loggedIn={props.loggedIn} handlerOpenNavBar={props.onNavBar} />
       <SearchForm
         searchMovies={props.searchMovies}
         setIsLoading={setLoading}
+        isLoading={props.isLoading}
       />
       {
         props.isLoading ?
@@ -30,6 +30,7 @@ function Movies(props) {
             handleDeleteMovie={props.handleDeleteMovie}
             fullSaveMovieList={props.fullSaveMovieList}
             resSearch={props.resSearch}
+            isLoading={props.isLoading}
           />
       }
 

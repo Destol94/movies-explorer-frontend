@@ -18,10 +18,9 @@ function MoviesCardList(props) {
         }
       </div>
       {
-        props.movieListRender.length > 3 && props.resSearch.length > props.movieListRender.length &&
+        props.movieListRender.length > 3 && props.resSearch && props.resSearch.length > props.movieListRender.length &&
         <button onClick={props.handleLoadCard} type="button" className="MoviesCardList__btn" >Ещё</button>
       }
-
     </div>
   )
 }

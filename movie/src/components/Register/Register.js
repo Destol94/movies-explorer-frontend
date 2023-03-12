@@ -19,7 +19,12 @@ function Register(props) {
     >
       <label className="RouteWithForm__label">
         <p className="RouteWithForm__label-text">Имя</p>
-        <input type="text" className="RouteWithForm__input" name="name" value={props.formWithValidation.value} onChange={props.formWithValidation.handleChange} required minLength="2" maxLength="50" />
+        <input type="text" className="RouteWithForm__input"
+          name="name"
+          value={props.formWithValidation.value}
+          onChange={props.formWithValidation.handleChangeName}
+          required minLength="2" maxLength="50" pattern="[ еЁA-zА-я]{2,50}"
+        />
         <span className="RouteWithForm__span-error">{props.formWithValidation.errors.name}</span>
       </label>
     </RouteWithForm>

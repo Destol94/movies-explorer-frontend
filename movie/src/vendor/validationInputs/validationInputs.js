@@ -27,7 +27,17 @@ export function useFormWithValidation() {
     setErrors({ ...errors, [name]: target.validationMessage });
     setIsValid(target.closest("form").checkValidity());
   };
-
+  const handleChangeName = (e) => {
+    const target = e.target;
+    const name = target.name;
+    const value = target.value;
+    setValues({ ...values, [name]: value });
+    if (value.length > 2 && (!/[еЁA-zА-я-\ ]*/.exec(value)[0] || /[еЁA-zА-я-\ ]*/.exec(value)[0] !== value)) {
+      setErrors({...errors, [name]: 'поле должно состоять из латиницы, кириллицы, пробелов или дефисов'});
+      setIsValid(false);
+    } else {setErrors({ ...errors, [name]: target.validationMessage });
+    setIsValid(target.closest("form").checkValidity());}
+  };
   const resetForm = useCallback(
     (newValues = {}, newErrors = {}, newIsValid = false) => {
       setValues(newValues);
@@ -37,5 +47,5 @@ export function useFormWithValidation() {
     [setValues, setErrors, setIsValid]
   );
 
-  return { values, handleChange, errors, isValid, resetForm, setValues };
+  return { values, handleChange, handleChangeName, errors, isValid, resetForm, setValues };
 }
