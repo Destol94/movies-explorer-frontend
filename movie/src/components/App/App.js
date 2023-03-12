@@ -13,6 +13,7 @@ import { useFormWithValidation } from '../../vendor/validationInputs/validationI
 import { autorization, changeProfile, checkToken, deleteMovie, loadMovieList, logout, registration, saveMovie } from '../../utils/MainApi';
 import CurrentUserContext from '../../context/CurrentUserContext';
 import ProtectedRouteElement from '../ProtectedRoute/ProtectedRoute';
+import RouteRedirect from '../RouteRedirect/RouteRedirect';
 
 
 function App() {
@@ -85,7 +86,7 @@ function App() {
     localStorage.setItem('searchResults', JSON.stringify(arr));
     renderingMovies(arr);
     setIsLoading(false);
-    if(arr.length === 0) {
+    if (arr.length === 0) {
       return arr.length;
     }
   }
@@ -331,17 +332,19 @@ function App() {
               />}
             />
           </Route>
-          <Route path="/signup"
-            element={<Register
-              formWithValidation={formWithValidation}
-              onRegistration={cbRegistration}
-            />} />
-          <Route path="/signin"
-            element={<Login
-              formWithValidation={formWithValidation}
-              onLogin={cbAutorization}
-            />}
-          />
+          <Route element={<RouteRedirect loggedIn={loggedIn} />}  >
+            <Route path="/signup"
+              element={<Register
+                formWithValidation={formWithValidation}
+                onRegistration={cbRegistration}
+              />} />
+            <Route path="/signin"
+              element={<Login
+                formWithValidation={formWithValidation}
+                onLogin={cbAutorization}
+              />}
+            />
+          </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
         <NavBar isOpen={isNavBarOpen} closeNavBar={handleCloseNavBar} />
