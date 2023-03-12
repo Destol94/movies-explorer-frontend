@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3001';
+const BASE_URL = 'https://api.my-diploma.nomoredomains.work';
 
 export const registration = async (name, email, password) => {
   const res = await fetch(`${BASE_URL}/signup`, {
