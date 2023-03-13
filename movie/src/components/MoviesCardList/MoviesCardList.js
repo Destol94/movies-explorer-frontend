@@ -4,7 +4,6 @@ import './MoviesCardList.css';
 
 
 function MoviesCardList(props) {
-  console.log(props.isLoading, props.movieListRender.length, props.fullSaveMovieList.length)
   return (
     <div className="MoviesCardList">
       <div className="MoviesCardList__container">
