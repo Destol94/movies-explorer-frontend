@@ -147,8 +147,10 @@ function App() {
     else {
       numberFilmOfAdded = 3;
     }
+    const resSearch = JSON.parse(localStorage.getItem('searchSaveResults'));
+    const originalMovieList = resSearch ? resSearch : fullSaveMovieList;
     for (let i = 0; i < numberFilmOfAdded; i++) {
-      let movie = JSON.parse(localStorage.getItem('searchSaveResults')).find(item => {
+      let movie = originalMovieList.find(item => {
         return arr.every(elem => item._id !== elem._id);
       })
       if (movie) {
@@ -268,7 +270,7 @@ function App() {
       loadDefaultListMovie();
       const searchResults = JSON.parse(localStorage.getItem('searchResults'))
       if (searchResults) {
-        setMovieListWithWidth(searchResults);
+        renderingMovies(searchResults);
       }
     }
   }, [loggedIn]);

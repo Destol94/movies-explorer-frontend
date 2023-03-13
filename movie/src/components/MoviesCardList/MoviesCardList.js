@@ -18,7 +18,18 @@ function MoviesCardList(props) {
         }
       </div>
       {
-        props.movieListRender.length > 3 && props.resSearch && props.resSearch.length > props.movieListRender.length &&
+        props.movieListRender.length > 3
+        &&
+        (props.resSearch ?
+          props.resSearch.length > props.movieListRender.length
+          :
+          (props.isLoading ?
+            (props.fullSaveMovieList.length > props.movieListRender.length)
+            :
+            true
+          )
+        )
+        &&
         <button onClick={props.handleLoadCard} type="button" className="MoviesCardList__btn" >Ещё</button>
       }
     </div>
