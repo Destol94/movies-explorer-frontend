@@ -1,0 +1,10 @@
+@import url(./__input/FilterCheckbox__input.css);
+@import url(./__text/FilterCheckbox__text.css);
+
+
+.FilterCheckbox .FilterCheckbox__input:checked + .FilterCheckbox__text:before {
+	background: #3DDC84;
+}
+.FilterCheckbox .FilterCheckbox__input:checked + .FilterCheckbox__text:after {
+	left: 18px;
+}

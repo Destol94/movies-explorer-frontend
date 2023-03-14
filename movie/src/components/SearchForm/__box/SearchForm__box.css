@@ -1,0 +1,32 @@
+.SearchForm__box {
+  display: flex;
+  height: 72px;
+  background-color: #222;
+  border-radius: 9px;
+  align-items: center;
+  padding: 0 30px;
+  margin: 70px auto;
+  position: relative;
+}
+
+.SearchForm__box:focus {
+  border: #fff solid 1px;
+}
+
+@media screen and (max-width: 900px) {
+  .SearchForm__box {
+    margin: 80px auto 120px;
+    padding: 0 20px;
+  }  
+}
+
+@media screen and (max-width: 710px) {
+  .SearchForm__box {
+    flex-direction: column;
+    margin: 80px auto 44px;
+    padding: 0;
+    gap: 45px;
+    height: auto;
+    background: none;
+  }  
+}

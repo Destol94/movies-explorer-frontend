@@ -1,0 +1,14 @@
+.RouteWithForm__box-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 90px;
+  position: relative;
+}
+
+@media screen and (max-width: 710px) {
+  .RouteWithForm__box-form {
+    margin-bottom: 157px;
+  }  
+}

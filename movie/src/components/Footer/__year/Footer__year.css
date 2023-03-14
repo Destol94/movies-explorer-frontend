@@ -1,0 +1,10 @@
+.Footer__year {
+  margin: 0;
+  color: #8B8B8B;
+}
+
+@media screen and (max-width: 710px) {
+  .Footer__year {
+    order: 1;
+  }
+}

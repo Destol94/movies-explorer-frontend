@@ -1,0 +1,3 @@
+.Navigation__link_active {
+  filter: invert(51%) sepia(92%) saturate(3135%) hue-rotate(201deg) brightness(97%) contrast(97%);
+}

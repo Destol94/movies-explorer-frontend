@@ -1,0 +1,23 @@
+.AboutProject__text-box {
+  padding: 0;
+  margin: 70px 0 110px;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+@media screen and (max-width: 900px) {
+  .AboutProject__text-box {
+    gap: 50px;
+    margin: 70px 0 93px;
+  }
+}
+
+@media screen and (max-width: 710px) {
+  .AboutProject__text-box {
+    gap: 30px;
+    margin: 60px 0;
+    flex-direction: column;
+    gap: 56px;
+  }
+}

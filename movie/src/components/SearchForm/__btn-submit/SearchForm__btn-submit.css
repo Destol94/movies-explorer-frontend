@@ -1,0 +1,13 @@
+.SearchForm__btn-submit {
+  height: 34px;
+  width: 58.65px;
+  border-radius: 48px;
+  background-color: #4285F4;
+  font-size: 11px;
+  line-height: 18px;
+  color: #fff;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}

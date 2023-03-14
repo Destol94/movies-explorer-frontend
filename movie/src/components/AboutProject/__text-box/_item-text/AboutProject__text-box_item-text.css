@@ -1,0 +1,20 @@
+.AboutProject__text-box_item-text {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+@media screen and (max-width: 900px) {
+  .AboutProject__text-box_item-text {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+@media screen and (max-width: 710px) {
+  .AboutProject__text-box_item-text {
+    font-size: 11px;
+    line-height: 16px;
+  }
+}

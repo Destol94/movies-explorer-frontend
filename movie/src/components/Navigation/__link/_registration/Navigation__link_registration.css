@@ -1,0 +1,10 @@
+@media screen and (max-width: 900px) {
+  .Navigation__link_registration {
+    display: none;
+  }
+}
+@media screen and (max-width: 710px) {
+  .Navigation__link_registration {
+    display: flex;
+  }
+}

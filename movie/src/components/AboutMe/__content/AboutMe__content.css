@@ -1,0 +1,14 @@
+.AboutMe__content {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 65px;
+}
+
+@media screen and (max-width: 710px) {
+  .AboutMe__content {
+    margin-top: 60px;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+}

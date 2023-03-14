@@ -1,0 +1,8 @@
+.SearchForm__box-found {
+  position: absolute;
+  top: 95px;
+  left: 20px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #8B8B8B;
+}

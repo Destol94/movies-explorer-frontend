@@ -1,0 +1,11 @@
+.Profile__btn {
+  background: none;
+  margin: 0;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  width: fit-content;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 16px;
+}

@@ -1,0 +1,8 @@
+.Profile__btn_edit {
+  color: #fff;
+}
+
+.Profile__btn_edit:disabled {
+  color: #8B8B8B;
+  cursor: default;
+}

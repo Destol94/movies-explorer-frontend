@@ -1,0 +1,14 @@
+.Footer__signature {
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px auto 0;
+}
+
+@media screen and (max-width: 710px) {
+  .Footer__signature {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+  }
+}

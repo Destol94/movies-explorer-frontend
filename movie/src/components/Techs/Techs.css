@@ -1,0 +1,21 @@
+@import url(./__text/Techs__text.css);
+@import url(./__header/Techs__header.css);
+@import url(./__list/Techs__list.css);
+@import url(./__item/Techs__item.css);
+
+.Techs {
+  padding: 100px 70px;
+  background-color: #272727;
+}
+
+@media screen and (max-width: 900px) {
+  .Techs {
+    padding: 90px 50px;
+  }
+}
+
+@media screen and (max-width: 710px) {
+  .Techs {
+    padding: 70px 18px;
+  }
+}

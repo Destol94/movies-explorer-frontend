@@ -1,0 +1,22 @@
+@import url(./_btn-burger/Header_btn-burger.css);
+@import url(./_btn-burger/_line/Header_btn-burger_line.css);
+
+.Header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 74px;
+  padding: 0 70px;
+}
+
+@media screen and (max-width: 900px) {
+  .Header {
+    padding: 0 30px;
+  }
+}
+@media screen and (max-width: 710px) {
+  .Header {
+    padding: 0 14px;
+  }
+}

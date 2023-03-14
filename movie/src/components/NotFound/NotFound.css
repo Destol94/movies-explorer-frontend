@@ -1,0 +1,20 @@
+@import url(./__title/NotFound__title.css);
+@import url(./__text/NotFound__text.css);
+@import url(./__link/NotFound__link.css);
+
+.NotFound {
+  color: #fff;
+  padding: 246px 0 60px;
+}
+
+@media screen and (max-width: 900px) {
+  .NotFound {
+    padding: 408px 0 222px;
+  }  
+}
+
+@media screen and (max-width: 900px) {
+  .NotFound {
+    padding: 329px 0 222px;
+  }  
+}

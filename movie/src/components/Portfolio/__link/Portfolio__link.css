@@ -1,0 +1,19 @@
+.Portfolio__link {
+  font-size: 30px;
+  line-height: 50px;
+  font-weight: 400;
+  letter-spacing: -0.04em;
+}
+
+@media screen and (max-width: 900px) {
+  .Portfolio__link {
+    font-size: 28px;
+  }
+}
+
+@media screen and (max-width: 710px) {
+  .Portfolio__link {
+    font-size: 18px;
+    line-height: 28px;
+  }
+}

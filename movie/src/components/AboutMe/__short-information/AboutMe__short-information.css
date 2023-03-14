@@ -1,0 +1,20 @@
+.AboutMe__short-information {
+  margin: 0 auto 26px 0;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 900px) {
+  .AboutMe__short-information {
+    font-size: 12px;
+    line-height: 18px;
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 710px) {
+  .AboutMe__short-information {
+    font-size: 11px;
+    line-height: 16px;
+  }
+}

@@ -1,0 +1,21 @@
+.Promo__header {
+  font-weight: 400;
+  margin: 0;
+  font-size: 50px;
+  line-height: 58px;
+}
+
+@media screen and (max-width: 900px) {
+  .Promo__header {
+    font-size: 40px;
+    line-height: 50px;
+  }
+}
+
+@media screen and (max-width: 710px) {
+  .Promo__header {
+    font-size: 30px;
+    line-height: 38px;
+    letter-spacing: -0.04em;
+  }
+}
