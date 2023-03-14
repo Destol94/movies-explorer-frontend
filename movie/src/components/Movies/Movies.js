@@ -16,6 +16,11 @@ function Movies(props) {
         searchMovies={props.searchMovies}
         setIsLoading={setLoading}
         isLoading={props.isLoading}
+        isSaveMovie={props.isSaveMovie}
+        checkboxState={props.checkboxState}
+        setCheckboxState={props.setCheckboxState}
+        searchText={props.searchText}
+        setSearchText={props.setSearchText}
       />
       {
         props.isLoading ?

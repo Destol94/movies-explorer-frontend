@@ -5,6 +5,7 @@
 @import url(./__label/RouteWithForm__label.css);
 @import url(./__label-text/RouteWithForm__label-text.css);
 @import url(./__input/RouteWithForm__input.css);
+@import url(./__input/_invalid/RouteWithForm__input_invalid.css);
 @import url(./__span-error/RouteWithForm__span-error.css);
 @import url(./__btn-submit/RouteWithForm__btn-submit.css);
 @import url(./__box-switch/RouteWithForm__box-switch.css);

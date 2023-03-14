@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../images/logo.svg';
 import './RouteWithForm.css';
@@ -14,7 +15,7 @@ function RouteWithForm(props) {
         {props.children}
         <label className="RouteWithForm__label">
           <p className="RouteWithForm__label-text">E-mail</p>
-          <input className="RouteWithForm__input" value={props.formWithValidation.value} name="email" onChange={props.formWithValidation.handleChange} type="email" required />
+          <input className="RouteWithForm__input" value={props.email} name="email" onChange={e=> props.formWithValidation.handleChangeEmail(e, props.setInputValue)} type="email" required />
           <span className="RouteWithForm__span-error">{props.formWithValidation.errors.email}</span>
         </label>
         <label className="RouteWithForm__label">

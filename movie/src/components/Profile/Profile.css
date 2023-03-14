@@ -8,6 +8,9 @@
 @import url(./__btn/Profile__btn.css);
 @import url(./__btn/_edit/Profile__btn_edit.css);
 @import url(./__btn/_logout/Profile__btn_logout.css);
+@import url(./__alert/Profile__alert.css);
+@import url(./__alert/_text/Profile__alert_text.css);
+@import url(./__alert/_button/Profile__alert_button.css);
 
 .Profile {
   padding-bottom: 70px;

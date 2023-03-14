@@ -26,6 +26,11 @@ function App() {
   const [saveMovieList, setSaveMovieList] = useState([]);
   const [currentUser, setCurrentUser] = useState({})
   const [isLoading, setIsLoading] = useState(false);
+  const [checkboxState, setCheckboxState] = useState(localStorage.getItem('checkboxState') || false);
+  const [searchText, setSearchText] = useState(localStorage.getItem('searchText') || '')
+  const [checkboxSaveState, setCheckboxSaveState] = useState(false)
+  const [searchSaveText, setSearchSaveText] = useState('');
+  const [isNotificationPlateState, setIsNotificationPlateState] = useState({ isOpen: false, text: '' });
 
   const navigate = useNavigate();
 
@@ -92,8 +97,8 @@ function App() {
   }
   function searchSavedMovies(searchText, checkboxState) {
     renderingMovies();
-    localStorage.setItem('searchText', searchText);
-    localStorage.setItem('checkboxState', checkboxState);
+    // localStorage.setItem('searchText', searchText);
+    // localStorage.setItem('checkboxState', checkboxState);
     const keyString = searchText.toLowerCase();
     const defaultMovieList = fullSaveMovieList;
 
@@ -111,7 +116,7 @@ function App() {
     } else {
       arr = defaultMovieList.filter(findMovie);
     }
-    localStorage.setItem('searchSaveResults', JSON.stringify(arr));
+    // localStorage.setItem('searchSaveResults', JSON.stringify(arr));
     renderingSavedMovies(arr);
     setIsLoading(false);
   }
@@ -223,8 +228,18 @@ function App() {
         throw new Error('Ошибка обновления пользователя');
       }
       setIsLoading(false);
+      setIsNotificationPlateState({ isOpen: true, text: 'Данные успешно обновлены' });
       setCurrentUser(res);
-    } catch (error) { console.log(error) };
+    } catch (error) {
+      if (error === 'Conflict') {
+        setIsLoading(false);
+        setIsNotificationPlateState({ isOpen: true, text: 'Такой пользователь уже зарегестрирован' });
+      }
+      else {
+        setIsLoading(false);
+        setIsNotificationPlateState({ isOpen: true, text: 'Ошибка обновления, попробуйте изменить почту или повторите попытку' });
+      }
+    };
   }
 
   async function hadleLogout() {
@@ -236,6 +251,8 @@ function App() {
     setMovieListWithWidth([]);
     setLoggedIn(false);
     setCurrentUser({});
+    setSearchText('');
+    setCheckboxState(false);
     navigate("/");
   }, [navigate]);
 
@@ -306,6 +323,10 @@ function App() {
                 setIsLoading={setIsLoading}
                 fullSaveMovieList={fullSaveMovieList}
                 resSearch={JSON.parse(localStorage.getItem('searchResults'))}
+                checkboxState={checkboxState}
+                setCheckboxState={setCheckboxState}
+                searchText={searchText}
+                setSearchText={setSearchText}
               />}
             />
             <Route path="/saved-movies"
@@ -320,7 +341,11 @@ function App() {
                 handleDeleteMovie={handleDeleteMovie}
                 setIsLoading={setIsLoading}
                 fullSaveMovieList={fullSaveMovieList}
-                resSearch={JSON.parse(localStorage.getItem('searchSaveResults'))}
+                checkboxState={checkboxSaveState}
+                setCheckboxState={setCheckboxSaveState}
+                searchText={searchSaveText}
+                setSearchText={setSearchSaveText}
+              // resSearch={JSON.parse(localStorage.getItem('searchSaveResults'))}
               />}
             />
             <Route path="/profile"
@@ -331,6 +356,8 @@ function App() {
                 onSubmit={handleChangeProfile}
                 isLoading={isLoading}
                 setIsLoading={setIsLoading}
+                isNotificationPlateState={isNotificationPlateState}
+                setIsNotificationPlateState={setIsNotificationPlateState}
               />}
             />
           </Route>

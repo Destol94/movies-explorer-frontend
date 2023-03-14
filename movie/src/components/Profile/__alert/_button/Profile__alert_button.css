@@ -1,0 +1,15 @@
+.Profile__alert_button {
+  position: absolute;
+  right: 6px;
+  top: 6px;
+  background-color: rgba(0, 0, 0, 0);
+  background-image: url(../../../../images/cross.png);
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  border: none;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  cursor: pointer;
+}

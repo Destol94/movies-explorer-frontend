@@ -1,4 +1,5 @@
-import { useContext } from 'react';
+import cross from '../../images/cross.png';
+import { useContext, useState } from 'react';
 import CurrentUserContext from '../../context/CurrentUserContext';
 import { useFormWithValidation } from '../../vendor/validationInputs/validationInputs';
 import Header from '../Header/Header';
@@ -8,12 +9,18 @@ import './Profile.css';
 function Profile(props) {
 
   const currentUser = useContext(CurrentUserContext);
-  const { values, handleChange, errors, isValid, resetForm, setValues } = useFormWithValidation();
+  const { handleChangeName, handleChangeEmail, errors, isValid, resetForm } = useFormWithValidation();
+  const [name, setName] = useState(currentUser.name);
+  const [email, setEmail] = useState(currentUser.email);
   function handleSubmit(e) {
     e.preventDefault();
     props.setIsLoading(true);
-    props.onSubmit(values.email, values.name);
+
+    props.onSubmit(email.toLowerCase(), name);
     resetForm();
+  }
+  function closeAlertNotification() {
+    props.setIsNotificationPlateState({ isOpen: false, text: '' })
   }
   return (
     <div className="Profile">
@@ -25,11 +32,11 @@ function Profile(props) {
             <p className="">Имя</p>
             <input className="Profile__input"
               name="name"
-              value={values.name}
-              onChange={handleChange}
+              value={name}
+              onChange={e => handleChangeName(e, setName)}
               minLength="2" maxLength="40" required
               type="text"
-              placeholder={currentUser.name}
+              placeholder="Имя"
             />
             <span className="Profile__span-error">{errors.name}</span>
           </label>
@@ -38,11 +45,11 @@ function Profile(props) {
             <p className="">E-mail</p>
             <input className="Profile__input"
               name="email"
-              value={values.email}
-              onChange={handleChange}
+              value={email}
+              onChange={e => handleChangeEmail(e, setEmail)}
               type="email"
               required
-              placeholder={currentUser.email}
+              placeholder="email"
             />
             <span className="Profile__span-error">{errors.email}</span>
           </label>
@@ -52,13 +59,20 @@ function Profile(props) {
         }
         <div className="Profile__button-box">
           <button type="submit"
-            disabled={(currentUser.email === values.email && currentUser.name === values.name) || !isValid}
+            disabled={(currentUser.email === email && currentUser.name === name) || !isValid}
             className="Profile__btn Profile__btn_edit"
           >
             Редактировать
           </button>
           <button className="Profile__btn Profile__btn_logout" onClick={props.onLogout} >Выйти из аккаунта</button>
         </div>
+        {
+          props.isNotificationPlateState.isOpen &&
+          <div className="Profile__alert">
+            <p className="Profile__alert_text">{props.isNotificationPlateState.text}</p>
+            <button onClick={closeAlertNotification} className="Profile__alert_button"></button>
+          </div>
+        }
       </form>
     </div>
   )
