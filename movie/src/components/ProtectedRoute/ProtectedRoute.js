@@ -1,8 +1,16 @@
-import { Navigate, Outlet } from "react-router-dom"
+import { Navigate, useLocation } from "react-router-dom"
 
-const ProtectedRouteElement = ({ loggedIn, children }) => {
-  return (
-    loggedIn ? children ? children: <Outlet /> : <Navigate to="/" replace/>
-)}
+const ProtectedRouteElement = ({component: Component, onlyUnAuth, ...props }) => {
+  const location = useLocation();
+  console.log(location)
+  if (props.loggedIn && onlyUnAuth) {
+    const { pathname } = location;
+    return <Navigate to={pathname} />
+  }
+  if (!props.loggedIn && onlyUnAuth) {
+    return <Navigate to="/" state={{ from: location }} />
+  }
+  return <Component {...props} />
+}
 
 export default ProtectedRouteElement; 

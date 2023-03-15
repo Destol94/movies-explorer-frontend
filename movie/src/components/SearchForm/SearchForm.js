@@ -3,8 +3,6 @@ import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import './SearchForm.css';
 
 function SearchForm(props) {
-  // const stateCheckBox = props.isSaveMovie ? false : localStorage.getItem('checkboxState');
-  // const [checkboxState, setCheckboxState] = useState(stateCheckBox);
   function changeCheckBox() {
     props.setCheckboxState(!props.checkboxState);
   }
@@ -19,7 +17,6 @@ function SearchForm(props) {
   function handleSubmit(e) {
     setIsFound(false);
     e.preventDefault();
-    props.setIsLoading();
     const resLenght = props.searchMovies(props.searchText, props.checkboxState);
     if (resLenght === 0) {
       setIsFound(true);

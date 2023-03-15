@@ -1,4 +1,3 @@
-import cross from '../../images/cross.png';
 import { useContext, useState } from 'react';
 import CurrentUserContext from '../../context/CurrentUserContext';
 import { useFormWithValidation } from '../../vendor/validationInputs/validationInputs';
@@ -18,9 +17,6 @@ function Profile(props) {
 
     props.onSubmit(email.toLowerCase(), name);
     resetForm();
-  }
-  function closeAlertNotification() {
-    props.setIsNotificationPlateState({ isOpen: false, text: '' })
   }
   return (
     <div className="Profile">
@@ -70,7 +66,7 @@ function Profile(props) {
           props.isNotificationPlateState.isOpen &&
           <div className="Profile__alert">
             <p className="Profile__alert_text">{props.isNotificationPlateState.text}</p>
-            <button onClick={closeAlertNotification} className="Profile__alert_button"></button>
+            <button onClick={props.onCloseAlertNotification} className="Profile__alert_button"></button>
           </div>
         }
       </form>

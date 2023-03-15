@@ -7,14 +7,12 @@ import Preloader from '../Preloader/Preloader';
 
 
 function Movies(props) {
-  const setLoading = () => { return props.setIsLoading(true) };
-
+console.log(props);
   return (
     <div className="Movies">
       <Header loggedIn={props.loggedIn} handlerOpenNavBar={props.onNavBar} />
       <SearchForm
         searchMovies={props.searchMovies}
-        setIsLoading={setLoading}
         isLoading={props.isLoading}
         isSaveMovie={props.isSaveMovie}
         checkboxState={props.checkboxState}

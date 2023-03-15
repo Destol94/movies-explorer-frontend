@@ -1,6 +1,7 @@
 @import url(../link/link.css);
 @import url(../line/line.css);
 @import url(../logo/logo.css);
+@import url(../alert/alert.css);
 
 .App {
   background-color: #202020;

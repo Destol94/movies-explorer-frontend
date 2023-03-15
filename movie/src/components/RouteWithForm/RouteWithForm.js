@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../images/logo.svg';
 import './RouteWithForm.css';
@@ -29,6 +28,13 @@ function RouteWithForm(props) {
         <p className="RouteWithForm__box-switch_text">{props.textLink}</p>
         <Link to={props.link} className="RouteWithForm__box_link link">{props.nameLink}</Link>
       </div>
+      {
+          props.isNotificationPlateState.isOpen &&
+          <div className="alert">
+            <p className="alert_text">{props.isNotificationPlateState.text}</p>
+            <button onClick={props.onCloseAlertNotification} className="alert_button"></button>
+          </div>
+        }
     </form>
   )
 }

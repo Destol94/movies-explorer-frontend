@@ -18,6 +18,8 @@ function Login(props) {
       valueEmail={email}
       setInputValue={setEmail}
       onSubmit={formSubmit}
+      isNotificationPlateState={props.isNotificationPlateState}
+      onCloseAlertNotification={props.onCloseAlertNotification}
     >
     </RouteWithForm>
   )
