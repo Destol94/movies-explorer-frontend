@@ -15,7 +15,6 @@ function SearchForm(props) {
   }
   const [isFound, setIsFound] = useState(false);
   function handleSubmit(e) {
-    setIsFound(false);
     e.preventDefault();
     const resLenght = props.searchMovies(props.searchText, props.checkboxState);
     if (resLenght === 0) {

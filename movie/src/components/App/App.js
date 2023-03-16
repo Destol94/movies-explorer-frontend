@@ -82,7 +82,6 @@ function App() {
 
 
   function searchMovies(searchText, checkboxState) {
-    // setIsLoading(!isLoading);
     localStorage.setItem('searchText', searchText);
     localStorage.setItem('checkboxState', checkboxState);
     const keyString = searchText.toLowerCase();
@@ -104,13 +103,11 @@ function App() {
     }
     localStorage.setItem('searchResults', JSON.stringify(arr));
     renderingMovies(arr);
-    setIsLoading(false);
     if (arr.length === 0) {
       return arr.length;
     }
   }
   function searchSavedMovies(searchText, checkboxState) {
-    // renderingMovies();
     const keyString = searchText.toLowerCase();
     const defaultMovieList = fullSaveMovieList;
 
@@ -129,7 +126,6 @@ function App() {
       arr = defaultMovieList.filter(findMovie);
     }
     renderingSavedMovies(arr);
-    setIsLoading(false);
   }
 
   function handleAddMovie() {
@@ -280,9 +276,13 @@ function App() {
   function loadDefaultListMovie() {
     moviesApi.getDefaultMovieList()
       .then((res) => {
+        setIsLoading(true)
         localStorage.setItem('defaultMovieList', JSON.stringify(res));
       })
-      .catch(err => { console.log(err) });
+      .catch(err => { console.log(err) })
+      .finally (() => {
+        setIsLoading(false);
+      });
   }
 
   function closeAlertNotification() {
@@ -334,7 +334,6 @@ function App() {
                 isLoading={isLoading}
                 handleSaveMovie={handleSaveMovie}
                 handleDeleteMovie={handleDeleteMovie}
-                setIsLoading={setIsLoading}
                 fullSaveMovieList={fullSaveMovieList}
                 resSearch={JSON.parse(localStorage.getItem('searchResults'))}
                 checkboxState={checkboxState}
@@ -353,7 +352,6 @@ function App() {
                 searchMovies={searchSavedMovies}
                 isLoading={isLoading}
                 handleDeleteMovie={handleDeleteMovie}
-                setIsLoading={setIsLoading}
                 fullSaveMovieList={fullSaveMovieList}
                 checkboxState={checkboxSaveState}
                 setCheckboxState={setCheckboxSaveState}
