@@ -7,7 +7,6 @@ import Preloader from '../Preloader/Preloader';
 
 
 function Movies(props) {
-console.log(props);
   return (
     <div className="Movies">
       <Header loggedIn={props.loggedIn} handlerOpenNavBar={props.onNavBar} />
