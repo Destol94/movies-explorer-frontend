@@ -15,6 +15,7 @@ import CurrentUserContext from '../../context/CurrentUserContext';
 import ProtectedRouteElement from '../ProtectedRoute/ProtectedRoute';
 import RouteRedirect from '../RouteRedirect/RouteRedirect';
 import { threeFilms, twoFilms } from '../../vendor/constants';
+import Preloader from '../Preloader/Preloader';
 
 
 function App() {
@@ -27,12 +28,15 @@ function App() {
   const [saveMovieList, setSaveMovieList] = useState([]);
   const [currentUser, setCurrentUser] = useState({})
   const [isLoading, setIsLoading] = useState(false);
-  const [checkboxState, setCheckboxState] = useState(localStorage.getItem('checkboxState') || false);
+  const checkboxStateBool = localStorage.getItem('checkboxState') === 'false' ? false : '';
+  const [checkboxState, setCheckboxState] = useState(checkboxStateBool || false);
   const [searchText, setSearchText] = useState(localStorage.getItem('searchText') || '')
   const [checkboxSaveState, setCheckboxSaveState] = useState(false)
   const [searchSaveText, setSearchSaveText] = useState('');
   const [isNotificationPlateState, setIsNotificationPlateState] = useState({ isOpen: false, text: '' });
-
+  const [location, setLocation] = useState('');
+  console.log(localStorage.getItem('checkboxState'));
+  console.log(checkboxStateBool);
   const navigate = useNavigate();
 
   function handleOpenNavBar() {
@@ -270,6 +274,14 @@ function App() {
         renderingSavedMovies(res);
         setFullSaveMovieList(res);
       }
+      else {
+        localStorage.clear();
+        setMovieListWithWidth([]);
+        setLoggedIn(false);
+        setCurrentUser({});
+        setSearchText('');
+        setCheckboxState(false);
+      }
     } catch (err) { console.log(err) }
   }, [])
 
@@ -280,7 +292,7 @@ function App() {
         localStorage.setItem('defaultMovieList', JSON.stringify(res));
       })
       .catch(err => { console.log(err) })
-      .finally (() => {
+      .finally(() => {
         setIsLoading(false);
       });
   }
@@ -311,6 +323,8 @@ function App() {
     if (res) {
       setLoggedIn(true);
       setCurrentUser(res);
+      // window.history.back();
+      console.log(location);
     }
     else setLoggedIn(false);
   };
@@ -321,78 +335,85 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser} >
       <div className="App">
-        <Routes>
-          <Route path="/" element={<Home loggedIn={loggedIn} onNavBar={handleOpenNavBar} />} />
-          <Route element={<ProtectedRouteElement loggedIn={loggedIn} />} >
-            <Route path="/movies"
-              element={<Movies
-                loggedIn={loggedIn}
-                onNavBar={handleOpenNavBar}
-                onAddMovieList={handleAddMovie}
-                movieList={movieListWithWidth}
-                searchMovies={searchMovies}
-                isLoading={isLoading}
-                handleSaveMovie={handleSaveMovie}
-                handleDeleteMovie={handleDeleteMovie}
-                fullSaveMovieList={fullSaveMovieList}
-                resSearch={JSON.parse(localStorage.getItem('searchResults'))}
-                checkboxState={checkboxState}
-                setCheckboxState={setCheckboxState}
-                searchText={searchText}
-                setSearchText={setSearchText}
-              />}
-            />
-            <Route path="/saved-movies"
-              element={<Movies
-                loggedIn={loggedIn}
-                isSaveMovie={true}
-                onNavBar={handleOpenNavBar}
-                onAddMovieList={handleAddSaveMovie}
-                movieList={saveMovieList}
-                searchMovies={searchSavedMovies}
-                isLoading={isLoading}
-                handleDeleteMovie={handleDeleteMovie}
-                fullSaveMovieList={fullSaveMovieList}
-                checkboxState={checkboxSaveState}
-                setCheckboxState={setCheckboxSaveState}
-                searchText={searchSaveText}
-                setSearchText={setSearchSaveText}
-              />}
-            />
-            <Route path="/profile"
-              element={<Profile
-                loggedIn={loggedIn}
-                onNavBar={handleOpenNavBar}
-                onLogout={cbLogout}
-                onSubmit={handleChangeProfile}
-                isLoading={isLoading}
-                setIsLoading={setIsLoading}
-                isNotificationPlateState={isNotificationPlateState}
-                setIsNotificationPlateState={setIsNotificationPlateState}
-                onCloseAlertNotification={closeAlertNotification}
-              />}
-            />
-          </Route>
-          <Route element={<RouteRedirect loggedIn={loggedIn} />}  >
-            <Route path="/signup"
-              element={<Register
-                formWithValidation={formWithValidation}
-                onRegistration={cbRegistration}
-                isNotificationPlateState={isNotificationPlateState}
-                onCloseAlertNotification={closeAlertNotification}
-              />} />
-            <Route path="/signin"
-              element={<Login
-                formWithValidation={formWithValidation}
-                onLogin={cbAutorization}
-                isNotificationPlateState={isNotificationPlateState}
-                onCloseAlertNotification={closeAlertNotification}
-              />}
-            />
-          </Route>
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-        <NavBar isOpen={isNavBarOpen} closeNavBar={handleCloseNavBar} />
+        {isLoading
+          ?
+          <Preloader />
+          :
+          <>
+            <Routes>
+              <Route path="/" element={<Home loggedIn={loggedIn} onNavBar={handleOpenNavBar} />} />
+              <Route element={<ProtectedRouteElement loggedIn={loggedIn} setLocation={setLocation} />} >
+                <Route path="/movies"
+                  element={<Movies
+                    loggedIn={loggedIn}
+                    onNavBar={handleOpenNavBar}
+                    onAddMovieList={handleAddMovie}
+                    movieList={movieListWithWidth}
+                    searchMovies={searchMovies}
+                    isLoading={isLoading}
+                    handleSaveMovie={handleSaveMovie}
+                    handleDeleteMovie={handleDeleteMovie}
+                    fullSaveMovieList={fullSaveMovieList}
+                    resSearch={JSON.parse(localStorage.getItem('searchResults'))}
+                    checkboxState={checkboxState}
+                    setCheckboxState={setCheckboxState}
+                    searchText={searchText}
+                    setSearchText={setSearchText}
+                  />}
+                />
+                <Route path="/saved-movies"
+                  element={<Movies
+                    loggedIn={loggedIn}
+                    isSaveMovie={true}
+                    onNavBar={handleOpenNavBar}
+                    onAddMovieList={handleAddSaveMovie}
+                    movieList={saveMovieList}
+                    searchMovies={searchSavedMovies}
+                    isLoading={isLoading}
+                    handleDeleteMovie={handleDeleteMovie}
+                    fullSaveMovieList={fullSaveMovieList}
+                    checkboxState={checkboxSaveState}
+                    setCheckboxState={setCheckboxSaveState}
+                    searchText={searchSaveText}
+                    setSearchText={setSearchSaveText}
+                  />}
+                />
+                <Route path="/profile"
+                  element={<Profile
+                    loggedIn={loggedIn}
+                    onNavBar={handleOpenNavBar}
+                    onLogout={cbLogout}
+                    onSubmit={handleChangeProfile}
+                    isLoading={isLoading}
+                    setIsLoading={setIsLoading}
+                    isNotificationPlateState={isNotificationPlateState}
+                    setIsNotificationPlateState={setIsNotificationPlateState}
+                    onCloseAlertNotification={closeAlertNotification}
+                  />}
+                />
+              </Route>
+              <Route element={<RouteRedirect loggedIn={loggedIn} />}  >
+                <Route path="/signup"
+                  element={<Register
+                    formWithValidation={formWithValidation}
+                    onRegistration={cbRegistration}
+                    isNotificationPlateState={isNotificationPlateState}
+                    onCloseAlertNotification={closeAlertNotification}
+                  />} />
+                <Route path="/signin"
+                  element={<Login
+                    formWithValidation={formWithValidation}
+                    onLogin={cbAutorization}
+                    isNotificationPlateState={isNotificationPlateState}
+                    onCloseAlertNotification={closeAlertNotification}
+                  />}
+                />
+              </Route>
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+            <NavBar isOpen={isNavBarOpen} closeNavBar={handleCloseNavBar} />
+          </>
+        }
       </div>
     </CurrentUserContext.Provider>
   );

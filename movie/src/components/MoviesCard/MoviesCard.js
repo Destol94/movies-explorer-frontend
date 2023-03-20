@@ -1,11 +1,11 @@
 import './MoviesCard.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { convectorFilmDuration } from '../../vendor/constants';
 
 function MoviesCard(props) {
   const savedMovie = props.fullSaveMovieList ? props.fullSaveMovieList.find(item => { return props.movie.id === item.movieId }) : '';
-  const [checkbox, setCheckbox] = useState(savedMovie);
+  const [checkbox, setCheckbox] = useState('');
   function handleChandgeBtn() {
     if (savedMovie) {
       props.handleDeleteMovie(savedMovie._id, setCheckbox);
@@ -17,6 +17,9 @@ function MoviesCard(props) {
   }
   const btnSaveMovieClassName = (`${checkbox && 'MoviesCard__btn_active'}`);
   const dutation = convectorFilmDuration(props.movie.duration);
+  useEffect(()=> {
+    setCheckbox(savedMovie)
+  }, [savedMovie])
   return (
     <div className="MoviesCard">
       <div className="MoviesCard__info">
