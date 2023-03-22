@@ -6,5 +6,6 @@ function convectorFilmDuration(duration) {
 
 const twoFilms = 2;
 const threeFilms = 3;
+const shortFilmDuration = 41;
 
-export {convectorFilmDuration , twoFilms, threeFilms};
+export {convectorFilmDuration , twoFilms, threeFilms, shortFilmDuration};

@@ -14,7 +14,7 @@ import { autorization, changeProfile, checkToken, deleteMovie, loadMovieList, lo
 import CurrentUserContext from '../../context/CurrentUserContext';
 import ProtectedRouteElement from '../ProtectedRoute/ProtectedRoute';
 import RouteRedirect from '../RouteRedirect/RouteRedirect';
-import { threeFilms, twoFilms } from '../../vendor/constants';
+import { shortFilmDuration, threeFilms, twoFilms } from '../../vendor/constants';
 import Preloader from '../Preloader/Preloader';
 
 
@@ -28,7 +28,7 @@ function App() {
   const [saveMovieList, setSaveMovieList] = useState([]);
   const [currentUser, setCurrentUser] = useState({})
   const [isLoading, setIsLoading] = useState(false);
-  const checkboxStateBool = localStorage.getItem('checkboxState') === 'false' ? false : '';
+  const checkboxStateBool = localStorage.getItem('checkboxState') === 'false' ? false : localStorage.getItem('checkboxState') === 'true' ? true : '';
   const [checkboxState, setCheckboxState] = useState(checkboxStateBool || false);
   const [searchText, setSearchText] = useState(localStorage.getItem('searchText') || '')
   const [checkboxSaveState, setCheckboxSaveState] = useState(false)
@@ -101,7 +101,7 @@ function App() {
     }
     let arr = [];
     if (checkboxState) {
-      arr = defaultMovieList.filter(film => film.duration < 41 && findMovie(film));
+      arr = defaultMovieList.filter(film => film.duration < shortFilmDuration && findMovie(film));
     } else {
       arr = defaultMovieList.filter(findMovie);
     }
@@ -125,7 +125,7 @@ function App() {
     }
     let arr = [];
     if (checkboxState) {
-      arr = defaultMovieList.filter(film => film.duration < 41 && findMovie(film));
+      arr = defaultMovieList.filter(film => film.duration < shortFilmDuration && findMovie(film));
     } else {
       arr = defaultMovieList.filter(findMovie);
     }
