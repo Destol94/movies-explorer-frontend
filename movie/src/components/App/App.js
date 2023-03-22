@@ -14,7 +14,7 @@ import { autorization, changeProfile, checkToken, deleteMovie, loadMovieList, lo
 import CurrentUserContext from '../../context/CurrentUserContext';
 import ProtectedRouteElement from '../ProtectedRoute/ProtectedRoute';
 import RouteRedirect from '../RouteRedirect/RouteRedirect';
-import { shortFilmDuration, threeFilms, twoFilms } from '../../vendor/constants';
+import { shortFilmDuration, threeFilmsAdd, twoFilmsAdd } from '../../vendor/constants';
 import Preloader from '../Preloader/Preloader';
 
 
@@ -137,10 +137,10 @@ function App() {
     let arr = movieListWithWidth.slice(0);
     let numberFilmOfAdded = 0;
     if (windowWidth < 1109) {
-      numberFilmOfAdded = 2;
+      numberFilmOfAdded = twoFilmsAdd;
     }
     else {
-      numberFilmOfAdded = 3;
+      numberFilmOfAdded = threeFilmsAdd;
     }
     for (let i = 0; i < numberFilmOfAdded; i++) {
       let movie = (JSON.parse(localStorage.getItem('searchResults')).find(item => {
@@ -158,10 +158,10 @@ function App() {
     let arr = saveMovieList.slice(0);
     let numberFilmOfAdded = 0;
     if (windowWidth < 1109) {
-      numberFilmOfAdded = twoFilms;
+      numberFilmOfAdded = twoFilmsAdd;
     }
     else {
-      numberFilmOfAdded = threeFilms;
+      numberFilmOfAdded = threeFilmsAdd;
     }
     const resSearch = JSON.parse(localStorage.getItem('searchSaveResults'));
     const originalMovieList = resSearch ? resSearch : fullSaveMovieList;
