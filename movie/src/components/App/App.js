@@ -28,15 +28,13 @@ function App() {
   const [saveMovieList, setSaveMovieList] = useState([]);
   const [currentUser, setCurrentUser] = useState({})
   const [isLoading, setIsLoading] = useState(false);
-  const checkboxStateBool = localStorage.getItem('checkboxState') === 'false' ? false : localStorage.getItem('checkboxState') === 'true' ? true : '';
-  const [checkboxState, setCheckboxState] = useState(checkboxStateBool || false);
+  const checkboxStateBool = localStorage.getItem('checkboxState') === 'true' ? true : false;
+  const [checkboxState, setCheckboxState] = useState(checkboxStateBool);
   const [searchText, setSearchText] = useState(localStorage.getItem('searchText') || '')
   const [checkboxSaveState, setCheckboxSaveState] = useState(false)
   const [searchSaveText, setSearchSaveText] = useState('');
   const [isNotificationPlateState, setIsNotificationPlateState] = useState({ isOpen: false, text: '' });
   const [location, setLocation] = useState('');
-  console.log(localStorage.getItem('checkboxState'));
-  console.log(checkboxStateBool);
   const navigate = useNavigate();
 
   function handleOpenNavBar() {
@@ -274,14 +272,6 @@ function App() {
         renderingSavedMovies(res);
         setFullSaveMovieList(res);
       }
-      else {
-        localStorage.clear();
-        setMovieListWithWidth([]);
-        setLoggedIn(false);
-        setCurrentUser({});
-        setSearchText('');
-        setCheckboxState(false);
-      }
     } catch (err) { console.log(err) }
   }, [])
 
@@ -319,14 +309,22 @@ function App() {
   }, [loggedIn]);
 
   async function handleTokenCheck() {
-    const res = await checkToken();
-    if (res) {
-      setLoggedIn(true);
-      setCurrentUser(res);
-      // window.history.back();
-      console.log(location);
+    try {
+      const res = await checkToken();
+      if (res) {
+        setLoggedIn(true);
+        setCurrentUser(res);
+        // window.history.back();
+        console.log(location);
+      }
+    } catch {
+      localStorage.clear();
+      setMovieListWithWidth([]);
+      setLoggedIn(false);
+      setCurrentUser({});
+      setSearchText('');
+      setCheckboxState(false);
     }
-    else setLoggedIn(false);
   };
   useEffect(() => {
     handleTokenCheck();
