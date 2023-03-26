@@ -1,0 +1,24 @@
+@import url(./__content/AboutMe__content.css);
+@import url(./__info/AboutMe__info.css);
+@import url(./__photo/AboutMe__photo.css);
+@import url(./__header/AboutMe__header.css);
+@import url(./__short-information/AboutMe__short-information.css);
+@import url(./__description/AboutMe__description.css);
+@import url(./__link/AboutMe__link.css);
+
+.AboutMe {
+  padding: 110px 70px 100px;
+  background-color: #202020;
+}
+
+@media screen and (max-width: 900px) {
+  .AboutMe {
+    padding: 90px 50px;
+  }
+}
+
+@media screen and (max-width: 710px) {
+  .AboutMe {
+    padding: 70px 14px;
+  }
+}

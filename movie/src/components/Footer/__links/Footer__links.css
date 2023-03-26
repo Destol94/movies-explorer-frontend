@@ -1,0 +1,14 @@
+.Footer__links {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+
+@media screen and (max-width: 710px) {
+  .Footer__links {
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 30px;
+  }
+}

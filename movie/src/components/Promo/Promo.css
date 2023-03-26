@@ -1,0 +1,29 @@
+@import url(./__text-box/Promo__text-box.css);
+@import url(./__header/Promo__header.css);
+@import url(./__explanations/Promo__explanations.css);
+@import url(./__info/Promo__info.css);
+@import url(./__link/Promo__link.css);
+@import url(./__img/Promo__img.css);
+
+.Promo {
+  display: flex;
+  padding: 75px 0;
+  justify-content: space-between;
+  background-color: #073042;
+  padding: 75px 70px;
+}
+
+@media screen and (max-width: 900px) {
+  .Promo {
+    padding: 140px 50px 76px;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media screen and (max-width: 710px) {
+  .Promo {
+    padding: 70px 18px 30px;
+    flex-direction: column;
+    align-items: center;
+  }
+}

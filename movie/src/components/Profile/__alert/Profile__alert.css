@@ -1,0 +1,7 @@
+.Profile__alert {
+  width: 100%;
+  position: absolute;
+  bottom: 80px;
+  background-color: rgba(77, 77, 77, 0.456);
+  border-radius: 10px;
+}

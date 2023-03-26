@@ -1,0 +1,31 @@
+.Techs__list {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.04em;
+}
+
+@media screen and (max-width: 900px) {
+  .Techs__list {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
+
+@media screen and (max-width: 710px) {
+  .Techs__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 84px);
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .Techs__list {
+    display: grid;
+    grid-template-columns: repeat(2, 84px);
+  }
+}

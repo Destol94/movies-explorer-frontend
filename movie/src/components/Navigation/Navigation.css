@@ -1,0 +1,12 @@
+@import url(./_vision/Navigation_vision.css);
+@import url(./__link/Navigation__link.css);
+@import url(./__link/_active/Navigation__link_active.css);
+@import url(./__link/_login/Navigation__link_login.css);
+@import url(./__link/_registration/Navigation__link_registration.css);
+@import url(./__link/_saved-films/Navigation__link_saved-films.css);
+@import url(./__link/_account/Navigation__link_account.css);
+@import url(./__link/_text-size/Navigation__link_text-size.css);
+
+.Navigation {
+  display: flex;
+}

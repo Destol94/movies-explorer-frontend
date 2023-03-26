@@ -1,0 +1,4 @@
+.NavBar__link_active {
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+}

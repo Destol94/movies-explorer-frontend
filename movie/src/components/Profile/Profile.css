@@ -1,0 +1,24 @@
+@import url(./__data/Profile__data.css);
+@import url(./__name/Profile__name.css);
+@import url(./__info-box/Profile__info-box.css);
+@import url(./__info-item/Profile__info-item.css);
+@import url(./__input/Profile__input.css);
+@import url(./__span-error/Profile__span-error.css);
+@import url(./__button-box/Profile__button-box.css);
+@import url(./__btn/Profile__btn.css);
+@import url(./__btn/_edit/Profile__btn_edit.css);
+@import url(./__btn/_logout/Profile__btn_logout.css);
+@import url(./__alert/Profile__alert.css);
+@import url(./__alert/_text/Profile__alert_text.css);
+@import url(./__alert/_button/Profile__alert_button.css);
+
+.Profile {
+  padding-bottom: 70px;
+  background-color: #202020;
+}
+
+@media screen and (max-width: 900px) {
+  .Profile {
+    padding-bottom: 269px;
+  }  
+}

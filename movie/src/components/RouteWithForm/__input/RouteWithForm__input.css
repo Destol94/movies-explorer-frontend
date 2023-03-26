@@ -1,0 +1,21 @@
+.RouteWithForm__input {
+  width: 100%;
+  border: none;
+  background-color: #2F2F2F;
+  padding: 15px;
+  height: 46px;
+  border-radius: 8px;
+  outline: none;
+  box-sizing: border-box;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #fff;
+}
+
+.RouteWithForm__input:invalid {
+  color: #EE3465
+}
+.RouteWithForm__input:focus {
+  border: #fff solid 1px;
+}

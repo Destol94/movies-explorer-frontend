@@ -1,0 +1,7 @@
+.Navigation__link_account {
+  border-radius: 50px;
+  height: 32px;
+  width: 100px;
+  border: solid 2px rgba(170, 170, 170, .2);
+  gap: 7px;
+}

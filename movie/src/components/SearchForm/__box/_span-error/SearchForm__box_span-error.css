@@ -1,0 +1,9 @@
+.SearchForm__box_span-error {
+  position: absolute;
+  color: #EE3465;
+  top: 80px;
+  left: 20px;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 13px;
+}
